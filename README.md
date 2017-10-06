@@ -30,7 +30,7 @@ paper1:
    url: https://github.com/bigdata-i523/hid310/paper1/paper1.pdf
    type: word
    status: in progress
-   chapter: Buisiness
+   chapter: Business
  ```
    
 # Paper 2
