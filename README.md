@@ -28,7 +28,7 @@ paper1:
        the population, to be used for community planning or research
        purposes. 
    url: https://github.com/bigdata-i523/hid310/paper1/paper1.pdf
-   type: Latex
+   type: latex
    status: 100%
    chapter: Business
  ```
