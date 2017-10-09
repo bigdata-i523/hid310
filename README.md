@@ -29,7 +29,7 @@ paper1:
        purposes. 
    url: https://github.com/bigdata-i523/hid310/paper1/paper1.pdf
    type: word
-   status: in progress
+   status: 100%
    chapter: Business
  ```
    
