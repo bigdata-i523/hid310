@@ -1,0 +1,115 @@
+\documentclass[sigconf]{acmart}
+
+\input{format/i523}
+
+\begin{document}
+\title{Big Data Applications in Food Insecurity}
+
+
+\author{Kevin Duffy}
+\orcid{1234-5678-9012}
+\affiliation{Graduate Student, Data Science Online Masters
+  \institution{Indiana University School of Informatics, Computing, and Engineering}
+  \streetaddress{4014 E. Stop 10 Rd.}
+  \city{Indianapolis} 
+  \state{Indiana} 
+  \postcode{46237}
+}
+\email{kevduffy@iu.edu}
+
+
+
+
+% The default list of authors is too long for headers}
+\renewcommand{\shortauthors}{K. Duffy}
+
+
+\begin{abstract}
+This paper addresses how big data can be used to identify "food deserts", areas where there is no fresh, healthy food available to the population, to be used for community planning or research purposes.
+\end{abstract}
+
+\keywords{food deserts, food insecurity, big data}
+
+
+\maketitle
+
+\section{Introduction}
+
+For many within the United States, ready access to affordable, nutritious food is a constant challenge. Many communities have no grocery store with supplies of various fresh foods, relying instead on convenience stores and fast food restaurants in order to find sustenance. These areas have come to be known as "food deserts". 
+
+It is estimated that 23.5 million Americans currently live in a food desert\cite{ver_ploeg_breneman_farrigan_2009}, and they have been linked to higher rates of childhood obesity, heart disease, and overall lower quality of life\cite{moore_roux_nettleton_jacobs_2008}. 
+
+Up until recently, it has been difficult to define what a food desert actually is, and where to find them. However, researchers armed with big data have been able to make advances in identifying these problem areas and introducing solutions to help the people living there. 
+
+This paper will set a common definition with which to identify what a food desert is and where they are found. It will then showcase a few examples of government and private sector solutions to food deserts using big data through information sharing and classification.
+
+\section{Definitions}
+
+It will be useful to identify a common definition to operate on concerning "food deserts". Since it is a relatively new term, many differing definitions have been floated. For the purposes of this paper, we will use te definition given by the United States Department of Agriculture (USDA). According to the USDA, a food desert is any area that meets two criteria: 
+\begin{enumerate}
+    \item Low income, defined using poverty rate and median family income data. A community defined as ''low-income'' would have the following characteristics\cite{ver_ploeg_breneman_farrigan_2009}:
+        \begin{enumerate}
+        \item Poverty rate exceeding 20 percent
+        
+        \item A median family income being no greater than 80 percent of the median family income of the larger community
+        \end{enumerate}
+    \item Low access, with at least one of the following characteristics\cite{usda}:
+        \begin{enumerate}
+        \item A. 33 percent of the population of the given area does not have the means (transportation) to reach a store, or
+        \item B. There is no store within their defined area.
+    \end{enumerate}
+\end{enumerate}
+
+\section{Identifying Problem Areas}
+
+With the problem defined, the USDA set out to identify where in the United States were the areas that matched this criteria. All of the needed data was publicly available.
+
+The USDA created their Food Access Research Atlas\cite{usdaers-foodaccessresearchatlas} in order to examine more carefully the similarities and differences between these areas. They used a variety of sources to inform the map where these areas existed:
+
+\begin{itemize}
+    \item For general demographics, population, and rural/urban distinction they used data from the 2010 census.
+    \item For income, vehicle availability, and food stamp participation they used data from the 2010-14 American Community Survey\cite{acs2014}.
+    \item For a comprehensive list of supermarkets and large grocery stores, they used two sources: 
+        \begin{enumerate}
+            \item A list of stores authorized to receive SNAP benefits (food stamps)
+            \item A trade list from Trade Dimensions TDLinx\cite{usda}.
+        \end{enumerate}
+\end{itemize}  
+
+This data was assigned to 1/2 kilometer squares for the most granular look possible at distinct food deserts within our cities and states. Using this information, they mapped out in detail where food deserts exist in the United States.\cite{usda}
+
+Isolating the problem is vital, but only part of the solution. There are reasons these communities are without sufficient grocery options. For rural areas, the population density is often too low for companies to find it worthwhile to build a new store. For urban areas, increased crime levels often deter companies from finding a location desirable, even if it is in a densely populated area.\cite{ver_ploeg_breneman_farrigan_2009} 
+
+However, unique solutions are emerging through the use of big data. Here are some examples of organizations using data such as that provided by the USDA to leverage solutions to those living in food deserts.
+
+\subsection{Online delivery}
+
+Normally, FreshDirect is used as a web-based produce delivery service catered towards a wealthier demographic. It provides fresh fruits and vegetables right to people's homes.  But the company recently started a pilot program to bring online groceries to disadvantaged areas identified as not have ready access to fresh food.\cite{haddon_gasparro_2016} The pilot program currently only exists in a few zip codes in New York, but it is proving effective.
+
+The company is able to use card readers at delivery to charge the groceries to the recipients' SNAP benefits card - bringing fresh food to deserts and circumventing the problem of companies avoiding high-crime areas for brick-and-mortar businesses. The company is compiling data on the impact of the pilot program as they look at possible expansion.\cite{haddon_gasparro_2016}
+
+\subsection{Charity matching}
+
+To many who live in food deserts, food pantries are an essential source of fresh food. These organizations used to be scattered and uncoordinated - donors did not know who to donate to, organizations had to rely on whatever foods happened to be dropped off in order to stock their shelves, and shoppers never knew what to expect when getting food. 
+
+That has changed with the Matching Excess and Need (MEANS) Database.\cite{center} MEANS connects donors and food distributors algorithmically to find the best match - a fast and local pickup for the donor, and real-time notifications on donation matches for the distributors. The algorithm takes into account factors such as how quickly a charity responds and picks up items, how much and what quantity of foods a donor typically provides, and what items a pantry typically needs.\cite{homemeans} This application has been adopted by restaurants and grocery stores to reduce waste and find a willing recipient for their donation. It has been adopted in virtually every state and by major companies to eliminate waste and give back to the community.
+
+\section{Conclusions}
+
+Food deserts, and food scarcity in general, continues to be a major problem in our society. However, thanks to scarcity and demographic data being better collected and utilized, new solutions are being introduced to this age-old problem. There may not be simple solutions to bringing brick-and-mortar grocery stores back into underserved areas, but new technology applications powered by big data could be a vital path forward to circumventing the problem. 
+
+The path forward seems to be increased data collection, collaboration and information sharing between governments and private organizations (encompassing non-profits and corporations). This can be used to identify at an even more granular level individuals at risk of food scarcity. Organizations can then use this information to create applications and programs to address these needs: 
+
+\begin{itemize}
+    \item If companies like FreshDirect are any indication, companies who previously found that potential revenue from establishments in high-crime areas not being worth the risk may reexamine these areas and find profit may still be found using innovative online shopping tools paired with software reading SNAP benefit data. 
+    \item If organizations like MEANS are any indication, non-profits may find that a greater utilization of big data to streamline the pairing of donors to pantries may greatly affect their organization's impact on hunger. In addition, this innovation greatly impacts businesses as well, as they can use these services to donate foods that would have otherwise been thrown away. This benefits them from a monetary standpoint (tax write-offs) as well as a PR standpoint. 
+\end{itemize}
+
+Big data applications are slowly but surely integrating into government, non-profit, and business functions. As we gain a greater understanding for the new concept of food deserts, hopefully data will continue to find ways to solve this problem.
+
+\TODO{CITATIONS NEED TO BE FIXED, ATTEND ONLINE HOUR AND GET HELP}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{report}{}
+
+\input{bibtex-error}\input{issues}\end{document}
