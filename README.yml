@@ -1,6 +1,19 @@
-ERROR: you have a problem in your file
-while scanning for the next token
-found character '`' that cannot start any token
-  in "<unicode string>", line 20, column 2:
-     ```
-     ^
+--- 
+owner: 
+    hid: 310
+    name: "Kevin Duffy"
+    url: "https://github.com/bigdata-i523/hid310"
+paper1: 
+    abstract: >
+        This paper addresses how big data can be used to identify food deserts,
+        areas where there is no fresh, healthy food available to the population,
+        to be used for community planning or research purposes. 
+    author: 
+        - "Kevin Duffy"
+    chapter: Business
+    hid: 
+        - 310
+    status: 100%
+    title: "Big Data Applications in Food Insecurity"
+    type: latex
+    url: "https://github.com/bigdata-i523/hid310/paper1/paper1.pdf"
