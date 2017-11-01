@@ -16,6 +16,8 @@
    url: https://github.com/bigdata-i523/hid310/paper1/paper1.pdf
    type: Latex
    
-   status: 100%
+   status: 99%
+   
+   Re-review date: 11/20/17
    
    chapter: Business
