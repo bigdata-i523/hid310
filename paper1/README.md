@@ -1,9 +1,9 @@
 
    author: 
-   - Kevin Duffy
+   Kevin Duffy
    
    hid:
-   - 310
+   310
    
    title: Big Data Applications in Food Insecurity
    
@@ -16,8 +16,7 @@
    url: https://github.com/bigdata-i523/hid310/paper1/paper1.pdf
    type: Latex
    
-   status: 99%
+   status: 11/20/17 99%
    
-   Re-review date: 11/20/17
    
    chapter: Business
