@@ -3,52 +3,29 @@
 \input{format/i523}
 
 \begin{document}
-\title{Big Data for Edge Computing}
+\title{Big Data Applications for Vehicle Crash Prediction}
 
 
-\author{Ben Trovato}
+\author{Kevin Duffy}
 \orcid{1234-5678-9012}
 \affiliation{%
-  \institution{Institute for Clarity in Documentation}
-  \streetaddress{P.O. Box 1212}
-  \city{Dublin} 
-  \state{Ohio} 
-  \postcode{43017-6221}
-}
-\email{trovato@corporation.com}
-
-\author{G.K.M. Tobin}
-\affiliation{%
-  \institution{Institute for Clarity in Documentation}
-  \streetaddress{P.O. Box 1212}
-  \city{Dublin} 
-  \state{Ohio} 
-  \postcode{43017-6221}
-}
-\email{webmaster@marysville-ohio.com}
-
-\author{Gregor von Laszewski}
-\affiliation{%
   \institution{Indiana University}
-  \streetaddress{Smith Research Center}
-  \city{Bloomington} 
-  \state{IN} 
-  \postcode{47408}
-  \country{USA}}
-\email{laszewski@gmail.com}
-
+  \streetaddress{4014 E. Stop 10 Rd.}
+  \city{Indianapolis} 
+  \state{Indiana} 
+  \postcode{46237}
+}
+\email{kevduffy@iu.edu}
 
 % The default list of authors is too long for headers}
-\renewcommand{\shortauthors}{G. v. Laszewski}
+\renewcommand{\shortauthors}{K. Duffy}
 
 
 \begin{abstract}
-This paper provides a sample of a \LaTeX\ document which conforms,
-somewhat loosely, to the formatting guidelines for
-ACM SIG Proceedings.
+The idea of predicting car crashes used to be a fruitless endeavor - relegated to mere guesswork. However, advances in big data applications have allowed law enforcement to more accurately predict when and where car crashes are likely to occur, thus lowering first response times and taking proactive actions to prevent accidents in high-risk corridors. This paper shows several different approaches different agencies have taken using the power of data to solve this critical problem. 
 \end{abstract}
 
-\keywords{Big Data, Edge Computing i523}
+\keywords{Big Data, Vehicles, Crashes}
 
 
 \maketitle
@@ -57,86 +34,94 @@ ACM SIG Proceedings.
 
 \section{Introduction}
 
-Put here an introduction about your topic. 
-We just need one sample refernce so the paper compiles in LaTeX so we
-put it here \cite{editor00}.
+Car crashes are the top cause of death for Americans between ages 5 and 34.\cite{gcn} Although the rate of car crashes has been dropping steadily over the last few decades \cite{iihs}, they remain a constant hazard for any who travel on our roads.
 
-\section{figures}
+While most of the talk regarding car crashes and big data usually involves the development of self-driving cars (and understandably so), more immediate measures are being developed to meet this problem. A common usage of data in this domain is the prediction of high-risk crash areas.
 
-In Figure \ref{f:fly} we show a fly. Please note that because we use
-just columwidth that the size of the figure will change to the
-columnwidth of the paper once we change the layout to final. CHnaging
-the layout to final should not be done by you. All figures will be
-listed at the end.
+The idea of predicting when and where crashes would occur used to be pure guesswork on the part of experienced police troopers\cite{pew}, but advances in big data analysis has allowed law enforcement agencies to begin predicting and mapping exactly when and where high-risk areas will occur. Advocates contend that these tools allow first responders to act more efficiently both reactively and proactively, making our roads safer on which to travel. 
 
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/fly.pdf}
-  \caption{Example caption}\label{f:fly}
+This paper will outline the initial problem being addressed by these tools, the ultimate goal of such an exercise, and briefly explore two approaches to this solution. 
+
+\section{Trends and Goals}
+In 1975, the United States had a rate of 3.35 deaths per 100 million miles traveled.\cite{iihs} In 2015, that rate stood at 1.13 deaths. In fact, during that time frame, the amount of miles traveled on our roads has more than doubled, while the average annual number of fatalities on our roads has dropped by more than 10,000. The National Highway Traffic Safety Administration (NHTSA) credits this to the successful implementation of the Four Es of traffic safety:
+\begin{itemize}
+    \item Enforcement
+    \item Engineering
+    \item Education
+    \item Emergency Medical Services \cite{gcn}
+\end{itemize}
+However, the NHTSA and other safety groups are not satisfied with merely lower numbers. They are driven by an initiative called Toward Zero Deaths which, as the name implies, strives toward the elimination of traffic related deaths.\cite{gcn} 
+
+But how can highway safety groups reach this lofty goal? And what are they already doing about it? It should come as little surprise that the powerful utilization of big data has been rising in this field.
+
+\section{Big Data Solutions}
+A lot of data points can be collected from current activities undertaken through the Four Es. These include things such as traffic volume at the time of the crash, vehicle speed, road and construction conditions, and emergency response times. \cite{gcn}
+
+In addition, state agencies have found that other extraneous factors contributed to the likelihood of a crash, such as events like football games, major holidays that correspond with an increase in drunk driving (such as New Year's Eve and Super Bowl Sunday), and concentrations of establishments that serve alcohol.\cite{pew} 
+
+Unfortunately, these data points were previously siloed off in different agencies and formats, making dynamic usage of this information difficult if not impossible. However, some states are beginning to utilize this data in an effective way. They are beginning to collect data in a deliberate way so as to coordinate information between agencies in order to create applications and tools for use by troopers, other emergency response, road planners, and the public at large. \cite{pew}
+
+States are going about this problem in different ways. This will allow us to approach the issue from different angles and see which approaches yield superior results. However, since these applications are still so new, it is not yet possible to fully evaluate their effectiveness on outcomes. This paper is examining two state approaches: Tennessee, which was one of the first initiatives in the nation, and Indiana, which was modeled after Tennessee's program in a more comprehensive way.
+
+\subsection{Tennessee}
+The origin of Tennessee Highway Patrol's Predictive Analytics program began in 2008, when state troopers switched from paper-and-pen crash reports to an electronic interface. This allowed Tennessee's agencies to use real-time data to create prediction software for car crashes. According to the State of Tennessee, the program uses SPSS software to apply three different statistical models with machine-learning algorithms in order to provide troopers with risk areas for certain types of crashes. \cite{tennessee} The models used were:
+\begin{enumerate}
+    \item Crash Reduction Analyzing Statistical History (CRASH). Using risk factors and historical crash data, this model gives probabilities on a fatal or injury-causing accident over four-hour blocks over a one week period, which is then illustrated on interactive maps.
+    \item Driving Under the Influence (DUI). Calculates the probability of a crash related to a DUI from 4 pm to 4 am. 
+    \item Commercial Motor Vehicle (CMV). Calculates the probability of a crash related to a commercial motor vehicle (such as a semi truck).\cite{tennessee}
+\end{enumerate}
+The program was implemented in 2013. Using this technology, troopers stationed themselves in more statistically advantageous positions in order to decrease response times to crashes, and take preliminary actions to prevent crashes such as setting up traffic direction or more aggressive enforcement on speeding and reckless driving. 
+
+From 2013 to 2015, Tennessee traffic deaths fell 3 percent, compared to a 7 percent increase across the nation. This cannot yet be directly tied to the performance of the program, but according to officials such as the THP Statistics official Patrick Dolan, the effect is clear.
+
+"Marrying targeted enforcement with the information coming from our Predictive Analytics program has allowed us to deploy our resources more effectively to execute our mission successfully," Dolan reported to the Tennessee government's Traffic Safety Innovations 2016 newsletter. \cite{tennessee}
+
+However, the trend became murkier in 2016. Tennessee traffic deaths spiked 8 percent, matching the national trend. Officials are still unclear whether the model is to blame. According to Dolan, average police response time dropped nearly 33 percent between 2012 and 2016. \cite{pew}
+
+\subsection{Indiana}
+In March 2014, then-Indiana Governor Mike Pence create by executive order the Management Performance Hub (MPH), a subagency tasked with driving "a coordinated effort by state agencies to share data and improve and strengthen services, maximize the utilization of available resources, and ensure that state services are available to all Hoosiers."\cite{pence}
+
+One of the first projects undertaken by MPH was the Crash Prediction Website. Inspired by Tennessee's program\cite{govtech}, the MPH worked in tandem with the Indiana State Police to create an interactive map (Figure 1, below) showing the probability of both fatal and nonfatal traffic accidents. 
+
+\begin{figure}
+\caption{The map shows the probability of a crash through color-coded blocks.\cite{indcrashmap}}
+\includegraphics{indcrashmap}
 \end{figure}
 
-When copying the example, please do not check in the images from the
-examples into your images directory as you will not need them for your
-paper. Instead use images that you like to include. If you do not have
-any images, do not dreate the images folder.
+The model grew out of several factors:
+\begin{enumerate}
+    \item The concept was borrowed from Tennessee's aforementioned Predictive Analytics program, though Indiana had a greater range and depth of data available. 
+    \item The core of the model is built upon data from 2 million crashes going back to 2004. The data was cleaned so only relevant crash data was included in the forecast.
+    \item The probability of a car crash is ranked from "very low risk" to "high risk", which is then indicated on the map through color-colded 1 square kilometer blocks over three hour time blocks.\cite{statescoop} This is more granular than Tennessee's maps, in both time and space scale. These probabilities are ranked based off of weather forecasts, traffic congestion, road conditions, time of day, historical information, and census data. 
+    \item The map is populated with different colored dots to represent past car crashes - red for injury-causing, grey for non-injuries. Users can then click these to identify unique details of actual car crashes.\cite{govtech}
+    \item The model is updated automatically with fresh crash reports, providing the software with dynamic information.
+\end{enumerate}
 
-\section{Tables}
+Unlike Tennessee's program, Indiana's crash map is completely available to the public for their own personal use, though its usage will primarily be used by police and first responders. 
 
-In case you need to create tables, you can do this with online tools
-(if you do not mind sharing your data) such as
-\url{https://www.tablesgenerator.com/} or other such tools (please
-google for them). They even allow you to manage tables as CSV.
+Although it is still too soon after launch to evaluate the effectiveness of this model, Indiana officials are optimistic. Indiana's Office of Management and Budget, the parent agency to the MPH, estimates that even a one percent reduction in Indiana crashes could net up to \$30 million in annual savings, besides the obvious benefits of fewer road casualties. 
 
-or generate them by hand while using the provided template in Table\ref{t:mytable}. Not ethat
-the caption is before the tabular environment.
-
-\begin{table}[htb]
-\centering
-\caption{My caption}
-\label{t:mytabble}
-\begin{tabular}{lll}
-1 & 2 & 3 \\
-\hline
-4 & 5 & 6 \\
-7 & 8 & 9
-\end{tabular}
-\end{table}
-
-\section{Long example}
-
-If you like to see a more elaborate example, please look at
-report-long.tex. 
+With the groundwork laid in the crash map, officials are hoping to utilize the technology in other ways. Major Michael White of the Indiana State Police, in an interview with Statescoop.com, said with the technology developed through this initiative, they hope to move on to using it to map crime data as well.\cite{statescoop}
 
 \section{Conclusion}
+While these applications and initiatives are still too new to fully evaluate, there does appear to be preliminary results that show promise. 
 
-Put here an conclusion. Conlcusions and abstracts must not have any
-citations in the section.
+Tennessee showed quick decline in car crashes and police response times, while Indiana built upon Tennessee's example to provide a more comprehensive look at all risk factors involved in a car crash, while opening this tool up to the public for personal use. 
 
+These applications also show promise in application to other domains, such as the Indiana State Police's interest in creating a crime risk map using the same principles. 
+
+It is also encouraging to view these as an example in various state agencies coordinating in order to share data and collaborate on applications. If Indiana's Management Performance Hub is any indication, these collaborations will continue, at least in Indiana. Hopefully more states follow suit in creating data sharing hubs and protocols in order to streamline government data utilization.
 
 \begin{acks}
 
-  The authors would like to thank Dr. Gregor von Laszewski for his
-  support and suggestions to write this paper.
+  The author would like to thank Dr. Gregor von Laszewski and all TA's for their tireless work in ensuring this class goes smoothly.
 
 \end{acks}
 
 \bibliographystyle{ACM-Reference-Format}
-\bibliography{report} 
+\bibliography{paper2} 
 
 \appendix
-
-We include an appendix with common issues that we see when students
-submit papers. One particular important issue is not to use the
-underscore in bibtex labels. Sharelatex allows this, but the
-proceedings script we have does not allow this.
-
-When you submit the paper you need to address each of the items in the
-issues.tex file and verify that you have done them. Please do this
-only at the end once you have finished writing the paper. To d this
-cange TODO with DONE. However if you check something on with DONE, but
-we find you actually have not executed it correcty, you will receive
-point deductions. Thus it is important to do this correctly and not
-just 5 minutes before the deadline. It is better to do a late
-submission than doing the check in haste. 
 
 \input{issues}
 
