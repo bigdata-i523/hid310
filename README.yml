@@ -17,3 +17,16 @@ paper1:
     title: "Big Data Applications in Food Insecurity"
     type: latex
     url: "https://github.com/bigdata-i523/hid310/paper1/paper1.pdf"
+    
+paper1: 
+    abstract: >
+The idea of predicting car crashes used to be a fruitless endeavor - relegated to mere guesswork. However, advances in big data applications have allowed law enforcement to more accurately predict when and where car crashes are likely to occur, thus lowering first response times and taking proactive actions to prevent accidents in high-risk corridors. This paper shows several different approaches different agencies have taken using the power of data to solve this critical problem.
+    author: 
+        "Kevin Duffy"
+    chapter: Business
+    hid: 
+        310
+    status: 11/06/17 100%
+    title: "Big Data Applications for Vehicle Crash Prediction"
+    type: latex
+    url: "https://github.com/bigdata-i523/hid310/paper2/paper2.pdf"
