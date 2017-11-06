@@ -18,7 +18,7 @@ paper1:
     type: latex
     url: "https://github.com/bigdata-i523/hid310/paper1/paper1.pdf"
     
-paper1: 
+paper2: 
     abstract: >
 The idea of predicting car crashes used to be a fruitless endeavor - relegated to mere guesswork. However, advances in big data applications have allowed law enforcement to more accurately predict when and where car crashes are likely to occur, thus lowering first response times and taking proactive actions to prevent accidents in high-risk corridors. This paper shows several different approaches different agencies have taken using the power of data to solve this critical problem.
     author: 
