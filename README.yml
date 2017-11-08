@@ -1,21 +1,21 @@
 ---
 owner:
     hid: 310
-    name: "Kevin Duffy"
-    url: "https://github.com/bigdata-i523/hid310"
+    name: Kevin Duffy
+    url: https://github.com/bigdata-i523/hid310
 paper1:
     abstract: >
-        This paper addresses how big data can be used to identify food deserts,
-        areas where there is no fresh, healthy food available to the population,
-        to be used for community planning or research purposes.
-    author: "Kevin Duffy"
+        This paper addresses how big data can be used to identify food
+        deserts, areas where there is no fresh, healthy food available
+        to the population, to be used for community planning or
+        research purposes.
+    author: Kevin Duffy
     chapter: Business
     hid: 310
     status: 11/20/17 99%
-    title: "Big Data Applications in Food Insecurity"
+    title: Big Data Applications in Food Insecurity
     type: latex
-    url: "https://github.com/bigdata-i523/hid310/paper1/paper1.pdf"
-    
+    url: https://github.com/bigdata-i523/hid310/paper1
 paper2:
     abstract: >
         The idea of predicting car crashes used to be a fruitless
@@ -31,9 +31,9 @@ paper2:
     chapter: Business
     hid: 310
     status: 11/06/17 100%
-    title: "Big Data Applications for Vehicle Crash Prediction"
+    title: Big Data Applications for Vehicle Crash Prediction
     type: latex
-    url: "https://github.com/bigdata-i523/hid310/paper2/report.pdf"
+    url: https://github.com/bigdata-i523/hid310/paper2
 
 project:
     abstract: >
@@ -41,6 +41,6 @@ project:
     chapter: Business
     hid: 310
     status: 5%
-    title: "Gerrymandering Detection Using Python"
+    title: Gerrymandering Detection Using Python
     type: python
-    url: "https://github.com/bigdata-i523/hid310/project/project.py"
+    url: https://github.com/bigdata-i523/hid310/project
