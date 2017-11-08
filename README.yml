@@ -9,9 +9,11 @@ paper1:
         deserts, areas where there is no fresh, healthy food available
         to the population, to be used for community planning or
         research purposes.
-    author: Kevin Duffy
+    author:
+        - Kevin Duffy
     chapter: Business
-    hid: 310
+    hid:
+        - 310
     status: 11/20/17 99%
     title: Big Data Applications in Food Insecurity
     type: latex
@@ -27,9 +29,11 @@ paper2:
         paper shows several different approaches different agencies
         have taken using the power of data to solve this critical
         problem.
-    author: Kevin Duffy
+    author:
+        - Kevin Duffy
     chapter: Business
-    hid: 310
+    hid:
+        - 310
     status: 11/06/17 100%
     title: Big Data Applications for Vehicle Crash Prediction
     type: latex
