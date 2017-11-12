@@ -4,8 +4,8 @@ df = pd.read_csv('federalelections2012.csv', names=['state', 'district', 'lastna
 #need to insert a way to add statewide vote totals for each party
 =SUMPRODUCT(SUMIF(state:state;List;B:B))
 
-if 'party'="R" then 'votes'="rvotes"
-  elsif 'party'="D" the 'votes'="dvotes"                                                    
+if 'party'="R" then 'votes'=rvotes
+  elsif 'party'="D" then 'votes'=dvotes                                                    
  #determining the state winner determines the formula we use to find the wasted votes                                                   
 for district 
   if "rvotes">"dvotes" then winner="rep" 
