@@ -4,13 +4,13 @@ import csv
 data = np.genfromtxt("federalelections2012.csv", dtype=None, delimiter=',', names=True, skip_header=0) 
 
 def wastedvotes(
-  if data['state']=data['state'] and data['district']=data['district']:
+  if data['state']==data['state'] and data['district']==data['district']:
     (min(data['votes'])+max(data['votes'])-(min(data['votes'])+1)))
   else quit() 
                           
 def eg(
-    if data['state']=data['state']:
-        (wastedvotes(data['state', 'party'="R"]-data['state', 'party'="D")/data)
+    if data['state']==data['state']:
+        (wastedvotes(data['state']['party']=="R"])-wastedvotes(data['state']['party']=="D"]))/data['votes']
     else quit())
     
 def advantage(
@@ -25,4 +25,4 @@ def gerrymander(
         print("Yes")
     else: print("No")
     
-print([state, eg(state), advantage(state), gerrymander(state)])
+print([data['state'], eg(data['state']), advantage(data['state']), gerrymander(data['state'])])
