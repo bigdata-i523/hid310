@@ -17,15 +17,15 @@ def eg(
     else quit())
     
 def advantage(
-    if eg>0:
+    if eg(data['state'])>0:
         print("Democrat")
-    elif eg<0:
+    elif eg(data['state'])<0:
         print("Republican")
     else: print("No advantage"))
                  
 def gerrymander(
-    if abs(eg())>=.07:
+    if abs(eg(data['state']))>=.07:
         print("Yes")
-    else: print("No")
+    else: print("No"))
     
 print([data['state'], eg(data['state']), advantage(data['state']), gerrymander(data['state'])])
