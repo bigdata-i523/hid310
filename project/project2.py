@@ -5,8 +5,11 @@ data = np.genfromtxt("federalelections2012.csv", dtype=None, delimiter=',', name
 
 def wastedvotes(
   if data['state']==data['state'] and data['district']==data['district']:
-    (min(data['votes'])+max(data['votes'])-(min(data['votes'])+1)))
-  else quit() 
+    if data['votes']==max(data['votes']):
+      max(data['votes'])-(min(data['votes'])+1)
+    elif data['votes']==min(data['votes']):
+      min(data['votes'])
+  else quit())
                           
 def eg(
     if data['state']==data['state']:
