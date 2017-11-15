@@ -1,6 +1,9 @@
 import pandas as pd
+
 df = pd.read_csv('federalelections2012.csv', names=['state', 'district', 'lastname', 'party', 'votes')
 
+                                                    
+                                                    
 #need to insert a way to add statewide vote totals for each party
 =SUMPRODUCT(SUMIF(state:state;List;B:B))
 
