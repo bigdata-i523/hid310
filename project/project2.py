@@ -2,17 +2,15 @@ import pandas as pd
 import numpy as np
 import csv
 data = np.genfromtxt("federalelections2012.csv", dtype=None, delimiter=',', names=True, skip_header=0) 
-                 
+
 def wastedvotes(
-    if data['state']=data['state'] and data['district']=data['district']:
-       find max(data['votes'])
-            if max(data['party']="R"):
-                for data['votes', 'party'](data['votes'="D"]+(data['votes'="R")-(data['votes'="D"]+1)))
-            else (votes("R")+(votes("D")-(votes("R")+1))))
-                 
+  if data['state']=data['state'] and data['district']=data['district']:
+    (min(data['votes'])+max(data['votes'])-(min(data['votes'])+1)))
+  else quit() 
+                          
 def eg(
-    if state=state and district=district:
-        state((wastedvotes("R")-wastedvotes("D"))/state(votes))
+    if data['state']=data['state']:
+        (wastedvotes(data['state', 'party'="R"]-data['state', 'party'="D")/data)
     else quit())
     
 def advantage(
