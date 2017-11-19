@@ -32,4 +32,7 @@ def gerrymander():
     else: print("No")
 
 #This will generate our list of all states, with columns indicating that state's efficiency gap score, the party advantage, and a yes/no column whether the state is excessively gerrymandered.
-print([data['state'], eg(data['state']), advantage(data['state']), gerrymander(data['state'])])
+finallist = ([data['state'], eg(data['state']), advantage(data['state']), gerrymander(data['state'])])
+print(finallist.sort(
+   key = lambda l: (l[1], l[0])
+)
