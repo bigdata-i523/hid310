@@ -2,6 +2,7 @@ state,district,lastname,party,votes
 AK,0,Cissna,D,82927
 AK,0,Young,R,185296
 AL,1,Bonner,R,196374
+AL,1,NONE,D,65458
 AL,2,Ford,D,103092
 AL,2,Roby,R,180591
 AL,3,Harris,D,98141
@@ -19,6 +20,7 @@ AR,1,Crawford,R,138800
 AR,2,Rule,D,113156
 AR,2,Griffin,R,158175
 AR,3,Womack,R,186467
+AR,3,NONE,D,62156
 AR,4,Jeffress,D,95013
 AR,4,Cotton,R,154149
 AZ,1,Kirkpatrick,D,122774
@@ -34,6 +36,7 @@ AZ,5,Salmon,R,183470
 AZ,6,Jette,D,97666
 AZ,6,Schweikert,R,179706
 AZ,7,Pastor,D,104489
+AZ,7,NONE,R,34829
 AZ,8,Scharer,D,95635
 AZ,8,Franks,R,172809
 AZ,9,Sinema,D,121881
@@ -63,6 +66,7 @@ CA,11,Fuller,R,87136
 CA,12,Pelosi,D,253709
 CA,12,Dennis,R,44478
 CA,13,Lee,D,250436
+CA,13,NONE,R,83478
 CA,14,Speier,D,203828
 CA,14,Bacigalupi,R,54455
 CA,15,Swalwell,D,120388
@@ -82,6 +86,7 @@ CA,21,Valadao,R,67164
 CA,22,Lee,D,81555
 CA,22,Nunes,R,132386
 CA,23,McCarthy,R,158161
+CA,23,NONE,D,52720
 CA,24,Capps,D,156749
 CA,24,Maldonado,R,127746
 CA,25,Rogers,D,106982
@@ -92,7 +97,8 @@ CA,27,Chu,D,154191
 CA,27,Orswell,R,86817
 CA,28,Schiff,D,188703
 CA,28,Jennerjahn,R,58008
-CA,29,Cárdenas,D,111287
+CA,29,CÃ¡rdenas,D,111287
+CA,29,NONE,R,37095
 CA,30,Sherman,D,149456
 CA,30,Berman,D,98395
 CA,31,Miller,R,88964
@@ -100,6 +106,7 @@ CA,31,Dutton,R,72255
 CA,32,Napolitano,D,124903
 CA,32,Miller,R,65208
 CA,33,Waxman,D,171860
+CA,33,NONE,R,57286
 CA,34,Becerra,D,120367
 CA,34,Smith,R,20223
 CA,35,McLeod,D,79698
@@ -107,7 +114,8 @@ CA,35,Baca,D,62982
 CA,36,Ruiz,D,110189
 CA,36,Mack,R,97953
 CA,37,Bass,D,207039
-CA,38,Sánchez,D,145280
+CA,37,NONE,R,69013
+CA,38,SÃ¡nchez,D,145280
 CA,38,Campos,R,69807
 CA,39,Chen,D,106360
 CA,39,Royce,R,145607
@@ -148,6 +156,7 @@ CO,3,Tipton,R,185291
 CO,4,Shaffer,D,125800
 CO,4,Gardner,R,200006
 CO,5,Lamborn,R,199639
+CO,5,NONE,D,66546
 CO,6,Miklosi,D,156937
 CO,6,Coffman,R,163938
 CO,7,Perlmutter,D,182460
@@ -171,6 +180,7 @@ FL,2,Southerland,R,175856
 FL,3,Gaillot,D,102468
 FL,3,Yoho,R,204331
 FL,4,Crenshaw,R,239988
+FL,4,NONE,D,79996
 FL,5,Brown,D,190472
 FL,5,Kolb,R,70700
 FL,6,Beaven,D,146489
@@ -191,7 +201,6 @@ FL,13,Ehrlich,D,139742
 FL,13,Young,R,189605
 FL,14,Castor,D,197121
 FL,14,Otero,R,83480
-FL,15,Ross,R,Unopposed
 FL,16,Fitzgerald,D,161929
 FL,16,Buchanan,R,187147
 FL,17,Bronson,D,116766
@@ -201,13 +210,15 @@ FL,18,West,R,164353
 FL,19,Roach,D,109746
 FL,19,Radel,R,189833
 FL,20,Hastings,D,214727
+FL,20,NONE,R,71575
 FL,21,Deutch,D,221263
+FL,21,NONE,R,73754
 FL,22,Frankel,D,171021
 FL,22,Hasner,R,142050
 FL,23,Wasserman Schultz,D,174205
 FL,23,Harrington,R,98096
-FL,24,Wilson,D,Unopposed
 FL,25,Diaz-Balart,R,151466
+FL,25,NONE,D,50488
 FL,26,Garcia,D,135694
 FL,26,Rivera,R,108820
 FL,27,Yevancey,D,85020
@@ -217,6 +228,7 @@ GA,1,Kingston,R,157181
 GA,2,Bishop,D,162751
 GA,2,House,R,92410
 GA,3,Westmoreland,R,232380
+GA,3,NONE,D,77460
 GA,4,Johnson,D,208861
 GA,4,Vaughn,R,75041
 GA,5,Lewis,D,234330
@@ -226,9 +238,11 @@ GA,6,Price,R,189669
 GA,7,Reilly,D,95377
 GA,7,Woodall,R,156689
 GA,8,Scott,R,197789
+GA,8,NONE,D,65930
 GA,9,Cooley,D,60052
 GA,9,Collins,R,192101
 GA,10,Broun,R,211065
+GA,10,NONE,D,70355
 GA,11,Thompson,D,90353
 GA,11,Gingrey,R,196968
 GA,12,Barrow,D,139148
@@ -237,8 +251,6 @@ GA,13,Scott,D,201988
 GA,13,Malik,R,79550
 GA,14,Grant,D,59245
 GA,14,Graves,R,159947
-GU,0,Bordallo,D,19765
-GU,0,Blas,R,12995
 HI,1,Hanabusa,D,116505
 HI,1,Djou,R,96824
 HI,2,Gabbard,D,168503
@@ -254,7 +266,6 @@ IA,4,King,R,200063
 ID,1,Farris,D,97450
 ID,1,Labrador,R,199402
 ID,2,LeFavour,D,110847
-ID,2,Chappell,D,235
 ID,2,Simpson,R,207412
 IL,1,Rush,D,236854
 IL,1,Peloquin,R,83989
@@ -263,6 +274,7 @@ IL,2,Woodworth,R,69115
 IL,3,Lipinski,D,168738
 IL,3,Grabowski,R,77653
 IL,4,Gutierrez,D,133226
+IL,4,NONE,R,44409
 IL,5,Quigley,D,177729
 IL,5,Schmitt,R,77289
 IL,6,Coolidge,D,132991
@@ -310,9 +322,11 @@ IN,8,Bucshon,R,151533
 IN,9,Yoder,D,132848
 IN,9,Young,R,165332
 KS,1,Huelskamp,R,211337
+KS,1,NONE,D,70446
 KS,2,Schlingensiepen,D,113735
 KS,2,Jenkins,R,167463
 KS,3,Yoder,R,201087
+KS,3,NONE,D,67029
 KS,4,Tillman,D,81770
 KS,4,Pompeo,R,161094
 KY,1,Hatchett,D,87199
@@ -322,11 +336,11 @@ KY,2,Guthrie,R,181508
 KY,3,Yarmuth,D,206385
 KY,3,Wicker,R,111452
 KY,4,Massie,R,174092
+KY,4,Adkins,D,106598
 KY,5,Stepp,D,55447
 KY,5,Rogers,R,195408
 KY,6,Chandler,D,141438
 KY,6,Barr,R,153222
-KY,4,Adkins,D,106598
 LA,1,Mendoza,D,61703
 LA,1,Scalise,R,193496
 LA,1,King,R,24844
@@ -339,10 +353,15 @@ LA,3,Boustany,R,139123
 LA,3,Landry,R,93527
 LA,3,Barrilleaux,R,7908
 LA,4,Fleming,R,187894
+LA,4,NONE,D,62631
 LA,5,Alexander,R,202536
+LA,5,NONE,D,67512
 LA,6,Cassidy,R,243553
+LA,6,NONE,D,81184
 MA,1,Neal,D,261936
+MA,1,NONE,R,87312
 MA,2,McGovern,D,259257
+MA,2,NONE,R,86419
 MA,3,Tsongas,D,212119
 MA,3,Golnik,R,109372
 MA,4,Kennedy,D,221303
