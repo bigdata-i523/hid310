@@ -7,35 +7,44 @@ data = np.genfromtxt("congressdata2012.csv", dtype=None, delimiter=',', names=Tr
 def dwaste():
    if data['dvotes']>data['rvotes']:
       return data['dvotes']-((data['rvotes']+data['dvotes'])*.51)
-   elsif data['dvotes']<data['rvotes']:
+   elif data['dvotes']<data['rvotes']:
       return data['dvotes']
    else: quit()
       
 def rwaste():
    if data['rvotes']>data['dvotes']:
       return data['rvotes']-((data['dvotes']+data['rvotes'])*.51)
-   elsif data['rvotes']<data['dvotes']:
+   elif data['rvotes']<data['dvotes']:
       return data['rvotes']
    else: quit()
       
 def eg():
   if dwaste()>rwaste():
      return (dwaste()-rwaste())/(data['dvotes']+data['rvotes'])
-   elsif dwaste()<rwaste():
+  elif dwaste()<rwaste():
      return (rwaste()-dwaste())/(data['dvotes']+data['rvotes'])
-   else:
-      return 0
+  else:
+     return 0
    
 def advantage():
    if dwaste()>rwaste():
       print("Republicans")
-   elsif dwaste()<rwaste():
+   elif dwaste()<rwaste():
       print("Democrats")
    else: print("Even")
       
 def gerrymander():
-   if eg()>=.07
-      print("Yes)
+   if eg()>=.07:
+      print("Yes")
    else: print("")
     
 print(data.groupby('state')[eg(), advantage(), gerrymander()].apply(list))
+
+###LOOK AT THIS EXAMPLE:::
+def RowWiseOperation(x):
+    if x.ExistingColumn1 in x.ExistingColumn.split(','):
+       return value1
+    else:
+       return value2
+
+YourDataFrame['NewColumn'] = YourDataFrame.apply(RowWiseOperation, axis = 1)
