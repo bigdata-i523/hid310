@@ -4,7 +4,37 @@ import csv
 data = np.genfromtxt("federalelections2012.csv", dtype=None, delimiter=',', names=True, skip_header=0) 
 
 #This function finds the wasted votes from each state race. The wasted votes are every vote for a losing party, and every vote for the winning party beyond those necessary for victory.
-def wastedvotes():
+def dwaste():
+   if data['dvotes']>data['rvotes']:
+      return data['dvotes']-((data['rvotes']+data['dvotes'])*.51)
+   elsif data['dvotes']<data['rvotes']:
+      return data['dvotes']
+   else: quit()
+      
+def rwaste():
+   if data['rvotes']>data['dvotes']:
+      return data['rvotes']-((data['dvotes']+data['rvotes'])*.51)
+   elsif data['rvotes']<data['dvotes']:
+      return data['rvotes']
+   else: quit()
+      
+def eg():
+  if dwaste()>rwaste():
+     return (dwaste()-rwaste())/(data['dvotes']+data['rvotes'])
+   elsif dwaste()<rwaste():
+     return (rwaste()-dwaste())/(data['dvotes']+data['rvotes'])
+   else:
+      return 0
+   
+def advantage():
+   if dwaste()>rwaste():
+      print("Republicans")
+   elsif dwaste()<rwaste():
+      print("Democrats")
+   else: print("Even")
+      
+
+   
    if data['state']==data['state'] and data['district']==data['district']:
     if data['votes']==max(data['votes']):
       max(data['votes'])-(min(data['votes'])+1)
