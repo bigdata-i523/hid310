@@ -39,12 +39,3 @@ def gerrymander():
    else: print("")
     
 print(data.groupby('state')[eg(), advantage(), gerrymander()].apply(list))
-
-###LOOK AT THIS EXAMPLE:::
-def RowWiseOperation(x):
-    if x.ExistingColumn1 in x.ExistingColumn.split(','):
-       return value1
-    else:
-       return value2
-
-YourDataFrame['NewColumn'] = YourDataFrame.apply(RowWiseOperation, axis = 1)
