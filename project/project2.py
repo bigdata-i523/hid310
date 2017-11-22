@@ -25,13 +25,14 @@ def rwaste():
 
 #This contains the efficiency gap formula, which is the number of wasted votes from party A minus the wasted votes from party B, divided by the total number of votes in a given state.       
 def eg():
-  if dwaste()>rwaste():
-     return (dwaste()-rwaste())/(data['dvotes']+data['rvotes'])
-  elif dwaste()<rwaste():
-     return (rwaste()-dwaste())/(data['dvotes']+data['rvotes'])
-  else:
-     return 0
-
+  if data['state']==data['state']:
+     if dwaste()>rwaste():
+        return (dwaste()-rwaste())/(data['dvotes']+data['rvotes'])
+     elif dwaste()<rwaste():
+        return (rwaste()-dwaste())/(data['dvotes']+data['rvotes'])
+     else:
+        return 0
+   
 #Regardless of efficiency gap score, the party with fewer wasted votes in a state has the district advantage.   
 def advantage():
    if dwaste()>rwaste():
