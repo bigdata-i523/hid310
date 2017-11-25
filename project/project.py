@@ -49,3 +49,7 @@ def gerrymander():
 
 #Create a list with every state's efficiency gap score, advantage, and gerrymandering yes/no. Sort in order of efficiency gap score.     
 print(data.groupby('state')[eg(), advantage(), gerrymander()].apply(list))
+#OR?
+prelim = [data, eg(), advantage(), gerrymander()]
+finallist = prelim.groupby['state']
+print(finallist)
