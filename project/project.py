@@ -30,29 +30,33 @@ data['DemWasted'] = data.apply(dwaste, axis=1)
 
 #This contains the efficiency gap formula, which is the number of wasted votes from party A minus the wasted votes from party B, divided by the total number of votes in a given state.       
 def eg(row):
-   if dwaste()>rwaste():
-      return (dwaste()-rwaste())
-   elif dwaste()<rwaste():
-      return (rwaste()-dwaste())
+   if row['DemWasted']>row['RepWasted']:
+      val = row['DemWasted']-row['RepWasted']/(row['rvotes']+row['dvotes'])
+   elif row['DemWasted']<row['RepWasted']:
+      val = row['RepWasted']-row['DemWasted']/(row['rvotes']+row['dvotes'])
    else:
-      return 0
-   
+      val = 0
+   return val
+
 #Regardless of efficiency gap score, the party with fewer wasted votes in a state has the district advantage.   
 def advantage(row):
-   if dwaste()>rwaste():
-      print("Republicans")
-   elif dwaste()<rwaste():
-      print("Democrats")
-   else: print("Even")
+   if row['DemWasted']>row['RepWasted']:
+      val = "Republicans"
+   elif row['DemWasted']<row['RepWasted']:
+      val = "Democrats"
+   else:
+      val = "Even"
+   return val
 
 #The efficiency gap authors determined 7percent wastedvotes/totalvotes to be the threshold for illegal gerrymandering     
-def gerrymander():
+def gerrymander(row):
    if eg()/(data['rvotes']+data['dvotes'])>=.07:
       print("Yes")
    else: print("")
+      
+newdata = data.groupby('state')
+newdata['Efficiency_Gap'] = data.apply(eg, axis=1)
+newdata['Advantage'] = data.apply(advantage, axis=1)
+newdata['Gerrymandered?'] = data.apply(gerrymander, axis=1)
 
-#Create a list with every state's efficiency gap score, advantage, and gerrymandering yes/no. Sort in order of efficiency gap score.     
-prelim = [data, eg(), advantage(), gerrymander()]
-finallist = prelim.groupby['state']
-print(finallist)
-
+newdata
