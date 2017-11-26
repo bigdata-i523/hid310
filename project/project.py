@@ -47,16 +47,9 @@ def advantage(row):
    else:
       val = "Even"
    return val
-
-#The efficiency gap authors determined 7percent wastedvotes/totalvotes to be the threshold for illegal gerrymandering     
-def gerrymander(row):
-   if eg()/(data['rvotes']+data['dvotes'])>=.07:
-      print("Yes")
-   else: print("")
       
 newdata = data.groupby('state')
 newdata['Efficiency_Gap'] = data.apply(eg, axis=1)
 newdata['Advantage'] = data.apply(advantage, axis=1)
-newdata['Gerrymandered?'] = data.apply(gerrymander, axis=1)
 
 newdata
