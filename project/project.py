@@ -49,7 +49,8 @@ def advantage(row):
    return val
       
 newdata = data.groupby('state')
-newdata['Efficiency_Gap'] = data.apply(eg, axis=1)
-newdata['Advantage'] = data.apply(advantage, axis=1)
+newdata['Efficiency_Gap'] = newdata.apply(eg, axis=1)
+newdata['Advantage'] = newdata.apply(advantage, axis=1)
+newdata.sort_values(by='Efficiency_Gap', ascending=0)
 
-newdata
+print(newdata)
