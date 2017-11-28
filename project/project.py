@@ -7,9 +7,9 @@ data = pd.read_csv("congressdata2012.csv")
 
 #Democrat wasted votes.
 def dwaste(row):
-   if row['dvotes']>row['rvotes']:
-      val = data['dvotes']-((data['rvotes']+data['dvotes'])*.51)
-   elif row['dvotes']<row['rvotes']:
+   if row['dvotes'] > row['rvotes']:
+      val = data['dvotes'] - ((data['rvotes'] + data['dvotes']) * .51)
+   elif row['dvotes'] < row['rvotes']:
       val = row['dvotes']
    else: 
       val = 0
@@ -17,9 +17,9 @@ def dwaste(row):
 
 #Republican wasted votes
 def rwaste(row):
-   if row['rvotes']>row['dvotes']:
-      val = row['rvotes']-((row['dvotes']+row['rvotes'])*.51)
-   elif row['rvotes']<row['dvotes']:
+   if row['rvotes'] > row['dvotes']:
+      val = row['rvotes'] - ((row['dvotes'] + row['rvotes']) * .51)
+   elif row['rvotes'] < row['dvotes']:
       val = row['rvotes']
    else: 
       val = 0
@@ -30,19 +30,19 @@ data['DemWasted'] = data.apply(dwaste, axis=1)
 
 #This contains the efficiency gap formula, which is the number of wasted votes from party A minus the wasted votes from party B, divided by the total number of votes in a given state.       
 def eg(row):
-   if row['DemWasted']>row['RepWasted']:
-      val = row['DemWasted']-row['RepWasted']/(row['rvotes']+row['dvotes'])
-   elif row['DemWasted']<row['RepWasted']:
-      val = row['RepWasted']-row['DemWasted']/(row['rvotes']+row['dvotes'])
+   if row['DemWasted'] > row['RepWasted']:
+      val = row['DemWasted'] - row['RepWasted'] / (row['rvotes'] + row['dvotes'])
+   elif row['DemWasted'] < row['RepWasted']:
+      val = row['RepWasted'] - row['DemWasted'] / (row['rvotes'] + row['dvotes'])
    else:
       val = 0
    return val
 
 #Regardless of efficiency gap score, the party with fewer wasted votes in a state has the district advantage.   
 def advantage(row):
-   if row['DemWasted']>row['RepWasted']:
+   if row['DemWasted'] > row['RepWasted']:
       val = "Republicans"
-   elif row['DemWasted']<row['RepWasted']:
+   elif row['DemWasted'] < row['RepWasted']:
       val = "Democrats"
    else:
       val = "Even"
