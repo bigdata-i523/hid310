@@ -14,7 +14,7 @@ paper1:
     chapter: Business
     hid:
         - 310
-    status: 11/20/17 99%
+    status: 11/20/17 100%
     title: Big Data Applications in Food Insecurity
     type: latex
     url: https://github.com/bigdata-i523/hid310/paper1
@@ -44,7 +44,7 @@ project:
     author: Kevin Duffy
     chapter: Business
     hid: 310
-    status: 5%
-    title: Gerrymandering Detection Using Python
+    status: 50%
+    title: Gerrymandering Detection Using Data Analysis
     type: python
     url: https://github.com/bigdata-i523/hid310/project
