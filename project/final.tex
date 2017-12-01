@@ -1,0 +1,168 @@
+\documentclass[sigconf]{acmart}
+
+\input{format/i523}
+
+\begin{document}
+\title{Gerrymandering Detection Using Data Analysis}
+
+\author{Kevin Duffy}
+\orcid{1234-5678-9012}
+\affiliation{%
+  \institution{Indiana University}
+  \streetaddress{4014 E. Stop 10 Rd.}
+  \city{Indianapolis} 
+  \state{Indiana} 
+  \postcode{46237}
+}
+\email{kevduffy@iu.edu}
+
+% The default list of authors is too long for headers}
+\renewcommand{\shortauthors}{K. Duffy}
+
+\begin{abstract}
+Can the evergreen issue of partisan gerrymandering be solved using data and algorithms? That question is closer to being solved than ever, as a method developed by University of Chicago researchers in 2014 is currently pending approval by the United States Supreme Court. We examine the method, known as the efficiency gap model, using data from the 2012 congressional elections. We determine the most gerrymandered states by creating a model that applies the efficiency gap method to this dataset. We then evaluate the effectiveness of this model and take stock of any substantial critiques and alternative methods.
+\end{abstract}
+
+\keywords{Big Data, Elections, Gerrymandering, Voting, Efficiency gap}
+
+\maketitle
+
+\section{Introduction}
+In 1964 the Supreme Court established in constitutional law the principle of "one-person, one-vote".\cite{oneperson} The idea appears self-evident; the value of any citizen's vote is equal to that of any other citizen's vote. But could anything still exist in our institutions of our democracy that resists this principle? Beyond obvious impediments to voting such as the since-repealed prohibition on women or racial minorities voting, what other barriers could exist? And why has "one-person, one-vote" become an issue as important, and contentious, as ever?
+
+The barrier, many will argue \cite{wapo}\cite{chicago}\cite{thornburg}, lies in the concept of "gerrymandering", or the manipulation of legislative district lines for the benefit of one political player over another. But determining whether something is gerrymandered has proven to be a difficult task. And even once you decide something is gerrymandered, what can be done about it? Answers to these questions may be coming in the form of both advanced data analysis, and simple arithmetic.
+
+In this paper we will lay the foundation of the issue: what is gerrymandering, when has it been used successfully, and what have people done to attempt to curb it? We will then explore possible tests to identify gerrymandering, particularly the efficiency gap method which is currently be litigated before the United States Supreme Court. We will replicate the efficiency gap method using congressional data to determine the greatest and least gerrymandered states, according to the model and suggest avenues for further study. We will take a cursory look at other detection methods that have been proposed. We will examine critiques of anti-gerrymandering efforts, including detection models, redistricting solutions, and the idea that gerrymandering should be regulated whatsoever. We will then conclude with an examination of proposals to solve gerrymandering after detection is completed, and the role data applications are playing in that study.
+
+\section{What is gerrymandering?}
+The building blocks of America's democratic republic are legislative districts. Any one American lives in three overlapping districts: their State Senate district, their State House of Representatives district, and their U.S. House of Representatives (congressional) district. There is a set limit of 435 congressional districts dispersed to the 50 states based on population measured at the last U.S. Census. Within each state, each congressional district must be exactly the same size. Across the nation as a whole, the average population of a district is 710,000 residents. State House and Senate districts are given a 10 percent population range, as long as it is not systematically used to give one party an advantage. The federal government leaves it to the states to draw the lines all three of these maps. While there is some variance, most states have these lines drawn by the state legislature themselves. The lines are redrawn every ten years, after the census is conducted, in a process called redistricting.\cite{maps}\cite{population}\cite{govtrack}
+
+Gerrymandering, simply put, is the process by which a political party in power uses redistricting to "manipulate district boundaries to create maps that systematically advantage the party in control and lock in an advantage for the party in future elections", according to the NYU Brennan Center of Justice.\cite{brennan} In other words, the political party seeks to maximize the efficiency of each vote for their candidates, while decreasing the efficiency of the opposite party. This is done primarily through by "cracking" and "packing" the district maps:
+\begin{itemize}
+    \item \textit{Cracking} means splitting up a bloc of voters loyal to one party into several other districts, thus diluting the power of their collective vote and maximizing the amount of districts the preferred party is competitive in.
+    \item \textit{Packing} means concentrating a bloc of voters loyal to the opposing party into one district, giving them an overwhelming share of the vote in that district, but decreasing 
+    their power in several other districts. \cite{chicago}
+\end{itemize}
+The overall effect of cracking and packing is maximize the "wasted votes" of the disfavored party, while minimizing those of the favored party. The concept of wasted votes is crucial to the model we will examine further. A wasted vote can be defined as one of the following:
+\begin{itemize}
+    \item For the winning candidate (party A), a wasted vote is any vote beyond the threshold needed to win, or 50 percent of the vote. 
+    \item Every vote for the losing candidate (party B) is considered wasted, as the vote did not net a seat for that party.\cite{chicago}
+\end{itemize}
+You can clearly see the potential for cracking and packing to greatly effect the amount of wasted votes a certain party receives. When a party's voters are cracked into several different districts, the net effect is that their votes go to various losing candidates, thus the votes are all wasted. When a party's voters are packed into one concentrated district, the net effect is that their votes overwhelmingly elect just one candidate, well beyond the needed threshold to win. Thus, all the votes beyond that threshold are wasted.
+
+\subsection{History}
+This is not merely a theoretical exercise. Gerrymandering has been utilized throughout the history of the United States by virtually every political party that has been in power. In fact, the term "gerrymander" dates back to 1812, when the \textit{Boston Gazette} used the phrase to decry a unfairly-drawn redistricting plan signed into law by Massachusetts Governor Elbridge Gerry.\cite{griffith} A famous political cartoon depicts one particularly contrived looking district as a dragon-esque creature, while others compared its shape to that of a salamander. The colloquial term became "gerry-mander" after the governor who enabled such a result.
+
+The utilization and effectiveness of gerrymandering does not appear to have lessened with time. One of the most effective uses of the practice happened earlier this decade. 
+
+In 2008, the national Republican Party was in a dire position. Barack Obama had just been elected president in a sweep that included control of both houses of Congress. They held the House of Representatives by the largest margin seen in almost 20 years.\cite{house} Journalist Michael Grunwald presented a grim narrative for the party in Time magazine in 2009, writing that "polls suggest that only one-fourth of the electorate considers itself Republican, that independents are trending Democratic and that as few as five states have solid Republican pluralities." In addition, he pointed out that the overall population was decreasing in demographics that had proven to be solidly Republican - "less white, less rural, less Christian".\cite{distress}
+
+Fast-forward to 2017: Republicans control the White House and Congress, owning the House by almost as large a margin as the Democrats did just 8 years earlier.\cite{house} What happened to produce results that so starkly contrast with the outlook Grunwald predicted?
+
+\subsection{REDMAP}
+
+In the wake of the 2008 election, the Republican State Leadership Committee launched the Redistricting Majority Project (REDMAP).\cite{redmap} The strategy of the plan was brilliant in its simplicity: use their funding to target state legislature races in order to control as many state legislatures as possible when the next redistricting occurred in 2011. In most states, the task of drawing new district boundaries is left to the state legislatures.\cite{maps} Redistricting occurs after each census to reflect changes in population densities and demographics. The strategy paid off in giving Republicans control of the redistricting process in many of the states. From there, partisan politics began its work.
+
+REDMAP was a clear success as evidenced by the ensuing 2012 election, the year in which Barack Obama won reelection. In Michigan, for example, voters cast 240,000 more votes overall for Democrats in congressional races, but 9 Republicans were elected and only 5 Democrats. In Pennsylvania, voters cast 83,000 more votes overall for Democrats in congressional races, but 13 Republicans were elected and only 5 Democrats. Across the nation, Republicans won 54 percent of house seats and 58 out of 99 state legislative chambers, while winning only 8 out of 33 Senate races (which are gerrymander-proof as they do not rely on district lines).\cite{redmap}
+
+The effect of gerrymandering is evident in the results of REDMAP. Republicans maximized the wasted votes of the Democrats and minimized the wasted votes of the Republicans. Although in many cases Democrats had more votes statewide, more Republicans candidates were sent to Congress. 
+
+Gerrymandering is an issue seen by many in both parties as problematic. Representative Brian Fitzpatrick (R-PA) wrote in \textit{The Hill} that gerrymandering has caused the nation to stray from its ideal of representative leadership, as it has "has undermined community-focused representation by forcing lawmakers to ideological extremes and exacerbating electoral complacency that causes lawmakers to focus on accumulating power rather than serving constituents."\cite{bipartisan}
+
+However, despite bipartisan efforts in the legislature such as those lauded by Fitzpatrick, the most promising avenue for curbing gerrymandering may lie in a different branch of government: the United States Supreme Court. 
+
+\subsection{The Supreme Court and Gerrymandering}
+The court has already banned racial gerrymandering in the decision on \textit{Thornburg v. Gingles} in 1986. They determined that a district map in North Carolina violated the Voting Rights Act by gerrymandering the districts in a way that unfairly dilluted the power of black voters.\cite{thornburg}
+
+But up until recently, partisan gerrymandering has been left to the states to police themselves. The Supreme Court has heard around 50 cases in its history imploring the court to intervene against a partisan gerrymandered map, and each time has deferred.\cite{chicago} The last major case was \textit{Vieth v. Jubelirer} in 2004. Justice Antonin Scalia, since deceased, delivered the majority opinion stating that the courts were not responsible for partisan gerrymandered maps as they were "non-justiciable".\cite{wapo}
+
+Justice Anthony Kennedy is reliable in his unreliability - he serves as the court's "swing vote", as court observers are often unsure which way he'll fall on a given issue until the decision is handed down. Given the court's ideological polarity often leads to close votes, this arguably makes him the most powerful justice on the bench. In \textit{Vieth}, Kennedy voted along with the majority opinion that upheld the allegedly-gerrymandered maps. However, he left open the possibility of the court adjudicating gerrymanders, if a clear standard could be found for determining whether a map is gerrymandered or not.\cite{wapo}
+
+Such a standard has not been apparent until, perhaps, now.
+
+\section{The Efficiency Gap}
+In 2017, a case reached the Supreme Court alleging that the Wisconsin State Assembly was gerrymandered in such an extremely partisan way as to render it unconstitutional. The plaintiffs, savvy enough to recognize Justice Kennedy as the potential swing vote and remembering his desire for a clear standard, argued their case using the "efficiency gap" method.\cite{wapo}
+
+The efficiency gap method was developed by University of Chicago law professor Nicholas Stephanopoulos and Eric McGhee, a researcher at the Public Policy Institute of California.\cite{chicago}
+
+The efficiency gap is a relatively simple formula, based on the aforementioned concept of wasted votes. The formula takes the total statewide wasted votes of party A and subtracts the total statewide wasted votes of party B, and then divides that number by the total number of statewide votes to find the efficiency gap score.\cite{chicago}
+
+\[Gap=\frac{Waste(A)-Waste(B)}{TotalVotes}\]
+
+Let's apply this to an example. Let's say Party A and Party B are competing in a state with three districts of 14,000 people each.
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ District & Party A votes & Party B votes \\
+ \hline
+ 01 & \textit{10,000} & 4,000 \\
+ \hline
+ 02 & 6,500 & \textit{7,500} \\
+ \hline
+ 03 & 6,000 & \textit{8,000} \\
+ \hline
+\end{tabular}
+\end{center}
+
+In District 01, Party A wins by an overwhelming margin of 6,000 votes. However, in District 02 and District 03, Party B narrowly wins by margins of 1,000 and 2,000 respectively. From this, we can surmise each party's wasted votes. Remember, wasted votes includes every vote cast for a losing candidate, and every vote cast for a winning candidate beyond the threshold necessary to win.
+
+\begin{center}
+\begin{tabular}{ |c|c|c|c| } 
+ \hline
+ District & Party A Wasted votes & Party B Wasted votes \\
+ \hline
+ 01 & 2,999 & 4,000 \\
+ \hline
+ 02 & 6,500 & 499 \\
+ \hline
+ 03 & 6,000 & 999 \\
+ \hline
+ \textbf{State} & \textbf{15,499} & \textbf{5,498} \\
+ \hline
+\end{tabular}
+\end{center}
+
+We can see that Party A has many more wasted votes than Party B, indicating the map may be drawn to minimize the efficiency of Party A. We then add up the total number of votes cast statewide and plug these numbers into our efficiency gap formula:
+
+\[\frac{15499 - 5498}{42000} = \frac{10001}{42000} = 0.238\]
+
+
+
+If the two parties have similar numbers of wasted votes, or neither party has a significant amount of wasted votes, the efficiency gap score for that state will be low indicating acceptable levels of map bias. However, if one party has a disproportionate number of wasted votes compared to its opponent, the result will be a higher efficiency gap score indicating unacceptable levels of map bias.
+
+This method captures the effects of both cracking and packing: packing will be detected by the wasted votes from an excessive victory, and cracking will be detected excessive amounts of losing votes statewide.
+
+The authors also establish thresholds for when an efficiency gap reaches levels of unconstitutional gerrymandering.
+
+
+
+\section{Experiment}
+\subsection{Data source}
+\subsection{Program methodology}
+\subsection{Results}
+
+\section{Criticism}
+\subsection{Efficiency gap shortfalls}
+\subsection{Philosophical differences}
+
+\section{Alternative detection methods}
+
+\section{Gerrymandering Solutions}
+
+\section{Conclusion}
+
+
+\begin{acks}
+
+  The author would like to thank Dr. Gregor von Laszewski and all TA's for their tireless work in ensuring this class goes smoothly.
+
+\end{acks}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{gerrymander} 
+
+\appendix
+
+\input{issues}
+
+\end{document}
