@@ -31,11 +31,13 @@ bottom = df['rvotes'].sum() + df['dvotes'].sum()
 rtotal2 = df2['rwaste'].sum()
 dtotal2 = df2['dwaste'].sum()
 bottom2 = df2['rvotes'].sum() + df2['dvotes'].sum()
+final = (dtotal-rtotal)/bottom)*100
+final2 = (dtotal2-rtotal2)/bottom2)*100
 #The result
 print("The efficiency gap score for the Indiana state HOUSE district map is:")
-print((dtotal-rtotal)/bottom)*100 percent)
+print(format(final, '.2f') "percent")
 print("This does NOT reach the threshold of 8 percent for illegal gerrymandering.")
 print(" ")
 print("The efficiency gap score for the Indiana state SENATE district map is:")
-print((dtotal2-rtotal2)/bottom2)*100 percent)
+print(format(final2, '.2f') "percent")
 print("This DOES reach the threshold of 8 percent for illegal gerrymandering.")
