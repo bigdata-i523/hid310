@@ -85,7 +85,7 @@ In 2017, a case reached the Supreme Court alleging that the Wisconsin State Asse
 
 The efficiency gap method was developed by University of Chicago law professor Nicholas Stephanopoulos and Eric McGhee, a researcher at the Public Policy Institute of California.\cite{chicago}
 
-The efficiency gap is a relatively simple formula, based on the aforementioned concept of wasted votes. The formula takes the total statewide wasted votes of party A and subtracts the total statewide wasted votes of party B, and then divides that number by the total number of statewide votes to find the efficiency gap score.\cite{chicago}
+The efficiency gap is a relatively simple formula, based on the aforementioned concept of wasted votes. The formula takes the total statewide wasted votes of party A and subtracts the total statewide wasted votes of party B, and then divides that number by the total number of statewide votes to find the efficiency gap score.\cite{chicagoformula}
 
 \[Gap=\frac{Waste(A)-Waste(B)}{TotalVotes}\]
 
@@ -95,38 +95,57 @@ Another way it can be written:
     Gap=(Seat margin) - (2 x Vote margin)
 \end{center}
 
-The "seat share" is the percentage of seats you win from the statewide allotment minus 50 percent, and the vote share is the total percentage of the vote you win minus 50 percent. A negative result means the map is biased against you. This is a helpful format when we begin measuring the effect of gerrymandering.
+The "seat margin" is the percentage of seats you win from the statewide allotment minus 50 percent, and the "vote margin" is the total percentage of the vote you win minus 50 percent. A negative result means the map is biased against you.\cite{chicagoformula} This is a helpful format when we begin measuring the net effect of gerrymandering in congressional districts.
 
-Let's apply this to an example. Let's say Party A and Party B are competing in a state with ten districts of 100 people each.
+If the two parties have similar numbers of wasted votes, or neither party has a significant amount of wasted votes, the efficiency gap score for that state will be low indicating acceptable levels of map bias. However, if one party has a disproportionate number of wasted votes compared to its opponent, the result will be a higher efficiency gap score indicating unacceptable levels of map bias.
+
+This method captures the effects of both cracking and packing: packing will be detected by the wasted votes from an excessive victory, and cracking will be detected excessive amounts of losing votes statewide.
+
+Let's apply this to an example. Let's say Party A and Party B are competing in a state with ten congressional districts of 100 people each.
+
 \begin{center}
 \begin{tabular}{ |c|c|c| } 
  \hline
  District & Party A votes & Party B votes \\
  \hline
- 01 & \textit{90} & 10 \\
+ 01 & \textbf{90} & 10 \\
  \hline
- 02 & 49 & \textit{51} \\
+ 02 & 49 & \textbf{51} \\
  \hline
- 03 & 45 & \textit{55} \\
+ 03 & 45 & \textbf{55} \\
  \hline
- 04 & \textit{95} & 5 \\
+ 04 & \textbf{95} & 5 \\
  \hline
- 05 & 45 & \textit{55} \\
+ 05 & 45 & \textbf{55} \\
  \hline
- 06 & \textit{90} & 10 \\
+ 06 & \textbf{90} & 10 \\
  \hline
- 07 & 49 & \textit{51} \\
+ 07 & 49 & \textbf{51} \\
  \hline
- 08 & 45 & \textit{55} \\
+ 08 & 45 & \textbf{55} \\
  \hline
- 09 & \textit{95} & 5 \\
+ 09 & \textbf{95} & 5 \\
  \hline
- 10 & 45 & \textit{55} \\
+ 10 & 45 & \textbf{55} \\
  \hline
 \end{tabular}
 \end{center}
 
-In District 01 and District 04, Party A wins by an overwhelming margin of 6,000 and 10,000. However, in District 02 and District 03, Party B narrowly wins by margins of 1,000 and 2,000 respectively. From this, we can surmise each party's wasted votes. Remember, wasted votes includes every vote cast for a losing candidate, and every vote cast for a winning candidate beyond the threshold necessary to win.
+In Districts 01, 04, 06, and 09, Party A wins by an overwhelming margin. In the rest of the districts, Party B wins by narrow margins. This results in more votes being cast for Party A statewide, but Party B gets more seats:
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+    \hline
+            & Party A & Party B \\
+    \hline
+      Votes & 648 & 352 \\
+    \hline
+      Seats & 4 & 6 \\
+    \hline
+    \end{tabular}
+\end{center}
+
+These races result in an overwhelming amount of wasted votes for Party A, and a minimal amount for Party B.
 
 \begin{center}
 \begin{tabular}{ |c|c|c|c| } 
@@ -153,7 +172,8 @@ In District 01 and District 04, Party A wins by an overwhelming margin of 6,000 
  \hline
  05 & 45 & 5 \\
  \hline
- \textbf{Total} & \textbf{448} & \textbf(52)
+ \textbf{Total} & \textbf{448} & \textbf{52} \\
+ \hline
 \end{tabular}
 \end{center}
 
@@ -164,36 +184,57 @@ We can see that Party A has many more wasted votes than Party B, indicating the 
 So our efficiency gap, written as a percentage, is 39.6 percent. The map is clearly tilted in favor of Party B. But is it considered illegal gerrymandering? In their paper, the authors establish thresholds for when an efficiency gap indicates levels of illegal gerrymandering:
 
 \begin{itemize}
-    \item For congressional maps, the map is illegally gerrymandered if it costs a party two congressional seats.
-    \item For state legislature maps, any efficiency gap score beyond eight percent is illegally gerrymandered.\cite{chicago}
+    \item For state legislature maps, an efficiency gap score above eight percent is considered illegally gerrymandered. The mere percentage is used as each legislature is an entity unto itself, elected wholly by voters in the state. This along with variances in size among state legislatures, makes efficiency gap the best way to normalize disparate state houses for comparison.
+    \item For congressional maps, a state is considered illegally gerrymandered if the map costs a party two seats. In contrast to state houses, the authors contend, "aggregate House seats are the parties' main objective". In that regard, seats are the best way to normalize disparate state sizes for comparison.\cite{chicagothreshold}
 \end{itemize}
 
-Why the two standards?
-
-If we write our formula in the format (Seat margin) - (2 x Vote margin), we can measure how many seats were lost as a result of the biased map. In this example, Party A won 64.8 percent of the vote, but only 4 out of the 10 seats. For Party A:
+If we write our formula in the format (Seat margin) - (2 x Vote margin), we can measure how many seats were lost as a result of the biased map. In this example, Party A won 64.8 percent of the vote, but was awarded only 4 out of the 10 seats. For Party A:
 
 \begin{center}
-    (40-50) - (2 x 14.8)
-    -10 - 29.6
-    -39.6
+    (.40-.50) - (2 x .148)
+    
+    -.10 - .296
+    
+    -.396
 \end{center}
 
-Now let's give Party A enough seats to make the efficiency gap score as close to 0 as possible:
+Now let's give Party A enough seats to make the efficiency gap score as close to 0 as possible. We will say that Party A in this alternate scenario received 8 seats, represented as .80 in the seat share value:
 
 \begin{center}
-    (80-50) - (2 x 14.8)
-    30 - 29.6
-    0.4
+    (.80-.50) - (2 x .148)
+    
+    .30 - .296
+    
+    .004
 \end{center}
 
-So using this formula, we have determined that the efficiency gap 
-Why the two standards?
+We have brought the score effectively to 0. So using this formula, we have determined that the efficiency gap derived from the biased map cost Party A a total of 4 seats, well above the threshold for illegal gerrymandering.
 
-If the two parties have similar numbers of wasted votes, or neither party has a significant amount of wasted votes, the efficiency gap score for that state will be low indicating acceptable levels of map bias. However, if one party has a disproportionate number of wasted votes compared to its opponent, the result will be a higher efficiency gap score indicating unacceptable levels of map bias.
+\section{Experiment}
 
-This method captures the effects of both cracking and packing: packing will be detected by the wasted votes from an excessive victory, and cracking will be detected excessive amounts of losing votes statewide.
+We implement the efficiency gap method into a python application powered by real-world election data in order to determine whether Indiana's state house and senate maps pass or fail the efficiency gap thresholds. 
 
-The authors also establish thresholds for when an efficiency gap reaches levels of unconstitutional gerrymandering.
+For our data, we use the election results from the 2016 Indiana House of Representatives races\cite{houseresults}, and the 2014 and 2016 Indiana State Senate races\cite{senateresults2014}\cite{senateresults2016}. The data was collected from Ballotpedia, an online election and candidate encyclopedia. For context, each member of the House is elected every even year for a two-year term. There are 100 representatives. Each member of the Senate is elected to a four-year term, with elections occurring every two years to elect half of the members. There are 50 senators. Thus, to receive a full sample of the House races, we only needed to collect data from one election year. But for the Senate, we needed two election years in order to collect data for the full senate.
+
+There were two complicating factors with the data that needed to be cleaned before implementation into our model.
+\begin{enumerate}
+    \item One third of the races in 2016 were uncontested, meaning the winning candidate had no opposition to compare to. In 2014, almost half were uncontested. Depending on the county data recording, these are represented in one of two ways. 
+        \begin{enumerate}
+            \item The votes cast for the winner are displayed, resulting in an election that looks like 20,000 votes were cast for candidate A, and 0 votes were cast for candidate B.
+            \item No votes are displayed, and the winner is simply displayed as a default.
+        \end{enumerate}
+    Both of these taken at face value are problematic for our model. In the first case, plugging these results into our model could overstate how many wasted votes there were in the election, as the model would think that the winner received 20,000 more votes than they needed to, and the loser received no wasted votes. This is unlikely to occur in reality if the opposing party had fielded a candidate. Even if it is not a close race, the loser would accumulate enough votes to alleviate the amount of wasted votes accrued by the winner and increase the amount of wasted votes for the loser. 
+    
+    In the second case, rather than overstating the wasted votes, they are understated. The race is treated as a draw in terms of wasted votes, when uncontested elections would in reality be a major symptom of an efficiency gap and wasted votes should be accrued. 
+    
+    Clearly, they cannot be ignored. The efficiency gap authors provide guidance on what to do with these races. For state house races, they ran a multi-level model using a fixed effect for incumbency and random effects for year, state, and district. If the district had been contested in its past, the value was derived from other districts in the state during that year along with the same district in other years. If not, they had a random draw of random effects. \cite{chicagouncontested}
+    
+    The results were a mean Democratic vote share of 
+    \item
+\end{enumerate}
+
+
+The question remains whether this standard will be used to measure map bias and judge gerrymandering. During oral arguments for \textit{Whitford} in October 2017, Chief Justice John Roberts referred to the theory as "sociological gobbledygook".\cite{gilltranscript} But some court observers are anticipating Justice Kennedy, the swing vote, to vote in favor of the efficiency gap test.\cite{analysis}
 
 
 
