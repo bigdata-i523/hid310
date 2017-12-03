@@ -210,38 +210,51 @@ Now let's give Party A enough seats to make the efficiency gap score as close to
 
 We have brought the score effectively to 0. So using this formula, we have determined that the efficiency gap derived from the biased map cost Party A a total of 4 seats, well above the threshold for illegal gerrymandering.
 
-\section{Experiment}
+\section{Application}
 
-We implement the efficiency gap method into a python application powered by real-world election data in order to determine whether Indiana's state house and senate maps pass or fail the efficiency gap thresholds. 
+We implemented the efficiency gap method into a python application powered by real-world election data in order to determine whether Indiana's state house and senate maps pass or fail the efficiency gap thresholds. 
+
+\subsection{Data sourcing and cleaning}
 
 For our data, we use the election results from the 2016 Indiana House of Representatives races\cite{houseresults}, and the 2014 and 2016 Indiana State Senate races\cite{senateresults2014}\cite{senateresults2016}. The data was collected from Ballotpedia, an online election and candidate encyclopedia. For context, each member of the House is elected every even year for a two-year term. There are 100 representatives. Each member of the Senate is elected to a four-year term, with elections occurring every two years to elect half of the members. There are 50 senators. Thus, to receive a full sample of the House races, we only needed to collect data from one election year. But for the Senate, we needed two election years in order to collect data for the full senate.
 
-There were two complicating factors with the data that needed to be cleaned before implementation into our model.
+There were two complicating factors with the data that needed to be cleaned before implementation into our model:
 \begin{enumerate}
     \item One third of the races in 2016 were uncontested, meaning the winning candidate had no opposition to compare to. In 2014, almost half were uncontested. Depending on the county data recording, these are represented in one of two ways. 
         \begin{enumerate}
             \item The votes cast for the winner are displayed, resulting in an election that looks like 20,000 votes were cast for candidate A, and 0 votes were cast for candidate B.
             \item No votes are displayed, and the winner is simply displayed as a default.
         \end{enumerate}
-    Both of these taken at face value are problematic for our model. In the first case, plugging these results into our model could overstate how many wasted votes there were in the election, as the model would think that the winner received 20,000 more votes than they needed to, and the loser received no wasted votes. This is unlikely to occur in reality if the opposing party had fielded a candidate. Even if it is not a close race, the loser would accumulate enough votes to alleviate the amount of wasted votes accrued by the winner and increase the amount of wasted votes for the loser. 
+    Both of these taken at face value are problematic for our model. In the first case, plugging these results into our model could overstate how many wasted votes there were for the winning candidate, as the model would think that the winner received 20,000 more votes than they needed to, and the loser received no wasted votes. This is unlikely to occur in reality if the opposing party had fielded a candidate. Even if it is not a close race, the loser would accumulate enough votes to alleviate the amount of wasted votes accrued by the winner and increase the amount of wasted votes for the loser. 
     
     In the second case, rather than overstating the wasted votes, they are understated. The race is treated as a draw in terms of wasted votes, when uncontested elections would in reality be a major symptom of an efficiency gap and wasted votes should be accrued. 
     
     Clearly, they cannot be ignored. The efficiency gap authors provide guidance on what to do with these races. For state house races, they ran a multi-level model using a fixed effect for incumbency and random effects for year, state, and district. If the district had been contested in its past, the value was derived from other districts in the state during that year along with the same district in other years. If not, they had a random draw of random effects. \cite{chicagouncontested}
     
-    The results were a mean Democratic vote share of 
-    \item
+    The results were a mean Democratic vote share of 66 percent for uncontested Democratic candidates, with 90 percent of values falling between 52 and 83 percent. Democratic vote share for races with uncontested Republicans was placed at 36 percent, with 90 percent of values falling between 22 and 43 percent. The authors do not hold this solution to be the be-all-end-all model for computing vote shares of uncontested candidates, as they "encourage scholars to explore a range of imputation techniques."\cite{chicagouncontested}
+    
+    Our solution was to uncritically use the authors' figures of 34 percent share for Republicans in uncontested Democratic seats, and 36 percent share for Democrats in uncontested Republican seats. For those seats that had no winning vote data available, we took the average population of a district, adjusted for that year's vote turnout, and applied the percentages to that number. For those seats with winning vote data, we simply took half of the winning votes as the loser's share of votes.
+    
+    If further work to be undergone on this application, we would recommend fine tuning these calculations, particularly if one were to specifically focus on a particular state legislature, as vote shares for a given political party would most likely vary from state to state.
+    \item The other complicating factor for this experiment was the existence of third parties. In the efficiency gap calculations, third party votes are ignored, relying on the two-party vote.\cite{gill} For most districts, the effect that third parties have is marginal:
+    \begin{itemize}
+        \item The United States is a two-party system, mostly due its "winner take all" election rules (where the party with the most votes is the singular winner in a given race, whereas a proportional system would give distribute legislative seats proportionally based on vote share). Third parties therefore have a difficult time gaining any sort of power:
+        \begin{itemize}
+            \item The highest vote share of any third party in the 2016 presidential election was 4 percent for the Libertarian Party, the highest share the Libertarian Party had ever received in a presidential election.\cite{libertarian}
+            \item There are no third party members of the Indiana House of Representatives and the Indiana State Senate.\cite{senateresults2016}\cite{houseresults}
+            \item There are no third party members of the U.S. House of Representatives.\cite{house}
+        \end{itemize}
+        \item Third parties are varied; there is no one singular third party to claim a stake in the redistricting process. Thus, their voice is diluted by diversification. 
+        \item When we establish that we are operating under a binary party system, third parties make no difference in the efficiency gap formula, as a vote cast for a third party candidate is wasted for Democrats and Republicans equally, thus cancelling itself out.
+    \end{itemize}
+    The solution was straightforward - we simply removed third party votes from our calculations and operated under a two-party vote system.
 \end{enumerate}
 
+\subsection{Implementation}
+
+\subsection{results}
 
 The question remains whether this standard will be used to measure map bias and judge gerrymandering. During oral arguments for \textit{Whitford} in October 2017, Chief Justice John Roberts referred to the theory as "sociological gobbledygook".\cite{gilltranscript} But some court observers are anticipating Justice Kennedy, the swing vote, to vote in favor of the efficiency gap test.\cite{analysis}
-
-
-
-\section{Experiment}
-\subsection{Data source}
-\subsection{Program methodology}
-\subsection{Results}
 
 \section{Criticism}
 \subsection{Efficiency gap shortfalls}
