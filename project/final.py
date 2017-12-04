@@ -27,17 +27,37 @@ df2['dwaste'] = df2.apply(dwaste, axis=1)
 rtotal = df['rwaste'].sum()
 dtotal = df['dwaste'].sum()
 bottom = df['rvotes'].sum() + df['dvotes'].sum()
-
 rtotal2 = df2['rwaste'].sum()
 dtotal2 = df2['dwaste'].sum()
 bottom2 = df2['rvotes'].sum() + df2['dvotes'].sum()
+
 final = ((dtotal-rtotal)/bottom)*100
 final2 = ((dtotal2-rtotal2)/bottom2)*100
+
+def eg():
+    if final > 8:
+        print("UNCONSTITUTIONAL GERRYMANDER")
+    else:
+        print("ACCEPTABLE")
+
+def eg2():
+    if final2 > 8:
+        print("UNCONSTITUTIONAL GERRYMANDER")
+    else:
+        print("ACCEPTABLE")
+
 #The result
-print("The efficiency gap score for the Indiana state HOUSE district map is:")
-print(format(final, '.2f'), "percent")
-print("This does NOT reach the threshold of 8 percent for illegal gerrymandering.")
+print("Indiana Efficiency Gap Analysis")
+print("Gerrymandering standard: gap > 8 percent")
 print(" ")
-print("The efficiency gap score for the Indiana state SENATE district map is:")
-print(format(final2, '.2f'), "percent")
-print("This DOES reach the threshold of 8 percent for illegal gerrymandering.")
+print("House of Representatives:")
+print("Democratic waste:", dtotal, "   Republican waste:", rtotal)
+print("Total voters:", bottom)
+print("Efficiency gap:", format(final, '.2f'), "percent")
+eg()
+print(" ")
+print("State Senate Efficiency Gap:")
+print("Democratic waste:", dtotal2, "   Republican waste:", rtotal2)
+print("Total voters:", bottom2)
+print("Efficieny gap:", format(final2, '.2f'), "percent")
+eg2()
