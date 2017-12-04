@@ -20,10 +20,10 @@
 \renewcommand{\shortauthors}{K. Duffy}
 
 \begin{abstract}
-Can the evergreen issue of partisan gerrymandering be solved using data and algorithms? That question is closer to being solved than ever, as a method developed by University of Chicago researchers in 2014 is currently pending approval by the United States Supreme Court. We examine the method, known as the efficiency gap model, using data from the 2012 congressional elections. We determine the most gerrymandered states by creating a model that applies the efficiency gap method to this dataset. We then evaluate the effectiveness of this model and take stock of any substantial critiques and alternative methods.
+Can the evergreen issue of partisan gerrymandering be solved using data and algorithms? That question is closer to being solved than ever, as a method developed by University of Chicago researchers in 2014 is currently pending approval by the United States Supreme Court. We examine the method, known as the efficiency gap model, using data from Indiana's recent State Senate and House elections. We then evaluate the effectiveness of this model, take stock of any substantial critiques, and suggest courses of further research.
 \end{abstract}
 
-\keywords{Big Data, Elections, Gerrymandering, Voting, Efficiency gap}
+\keywords{Big Data, Elections, Gerrymandering, Voting, Efficiency gap, i523, HID 310}
 
 \maketitle
 
@@ -32,7 +32,7 @@ In 1964 the Supreme Court established in constitutional law the principle of "on
 
 The barrier, many will argue \cite{wapo}\cite{chicago}\cite{thornburg}, lies in the concept of "gerrymandering", or the manipulation of legislative district lines for the benefit of one political player over another. But determining whether something is gerrymandered has proven to be a difficult task. And even once you decide something is gerrymandered, what can be done about it? Answers to these questions may be coming in the form of both advanced data analysis, and simple arithmetic.
 
-In this paper we will lay the foundation of the issue: what is gerrymandering, when has it been used successfully, and what have people done to attempt to curb it? We will then explore possible tests to identify gerrymandering, particularly the efficiency gap method which is currently be litigated before the United States Supreme Court. We will replicate the efficiency gap method using congressional data to determine the greatest and least gerrymandered states, according to the model and suggest avenues for further study. We will take a cursory look at other detection methods that have been proposed. We will examine critiques of anti-gerrymandering efforts, including detection models, redistricting solutions, and the idea that gerrymandering should be regulated whatsoever. We will then conclude with an examination of proposals to solve gerrymandering after detection is completed, and the role data applications are playing in that study.
+In this paper we will lay the foundation of the issue: what is gerrymandering, when has it been used successfully, and what have people done to attempt to curb it? We will then explore possible tests to identify gerrymandering, particularly the efficiency gap method which is currently be litigated before the United States Supreme Court. We will replicate the efficiency gap method using data from Indiana's recent State Senate and House elections to determine the level of gerrymandering in the state's legislative maps, according to the model and suggest avenues for further study.  We will evaluate these results, seek to find corroborating evidence for the model's accuracy, and suggest further courses of study.
 
 \section{What is gerrymandering?}
 The building blocks of America's democratic republic are legislative districts. Any one American lives in three overlapping districts: their State Senate district, their State House of Representatives district, and their U.S. House of Representatives (congressional) district. There is a set limit of 435 congressional districts dispersed to the 50 states based on population measured at the last U.S. Census. Within each state, each congressional district must be exactly the same size. Across the nation as a whole, the average population of a district is 710,000 residents. State House and Senate districts are given a 10 percent population range, as long as it is not systematically used to give one party an advantage. The federal government leaves it to the states to draw the lines all three of these maps. While there is some variance, most states have these lines drawn by the state legislature themselves. The lines are redrawn every ten years, after the census is conducted, in a process called redistricting.\cite{maps}\cite{population}\cite{govtrack}
@@ -72,7 +72,7 @@ Gerrymandering is an issue seen by many in both parties as problematic. Represen
 However, despite bipartisan efforts in the legislature such as those lauded by Fitzpatrick, the most promising avenue for curbing gerrymandering may lie in a different branch of government: the United States Supreme Court. 
 
 \subsection{The Supreme Court and Gerrymandering}
-The court has already banned racial gerrymandering in the decision on \textit{Thornburg v. Gingles} in 1986. They determined that a district map in North Carolina violated the Voting Rights Act by gerrymandering the districts in a way that unfairly dilluted the power of black voters.\cite{thornburg}
+The court has already banned racial gerrymandering in the decision on \textit{Thornburg v. Gingles} in 1986. They determined that a district map in North Carolina violated the Voting Rights Act by gerrymandering the districts in a way that unfairly diluted the power of black voters.\cite{thornburg}
 
 But up until recently, partisan gerrymandering has been left to the states to police themselves. The Supreme Court has heard around 50 cases in its history imploring the court to intervene against a partisan gerrymandered map, and each time has deferred.\cite{chicago} The last major case was \textit{Vieth v. Jubelirer} in 2004. Justice Antonin Scalia, since deceased, delivered the majority opinion stating that the courts were not responsible for partisan gerrymandered maps as they were "non-justiciable".\cite{wapo}
 
@@ -213,6 +213,17 @@ Now let's give Party A enough seats to make the efficiency gap score as close to
 
 We have brought the score effectively to 0. So using this formula, we have determined that the efficiency gap derived from the biased map cost Party A a total of 4 seats, well above the threshold for illegal gerrymandering.
 
+The question remains whether this standard will be used to measure map bias and judge gerrymandering. During oral arguments for \textit{Whitford} in October 2017, Chief Justice John Roberts referred to the theory as "sociological gobbledygook".\cite{gilltranscript} But some court observers are anticipating Justice Kennedy, the swing vote, to vote in favor of the efficiency gap test.\cite{analysis}
+
+\subsection{Criticism}
+
+As with any politically-charged debate, the efficiency gap has drawn criticism for simplifying the electoral process too much to come to its result. Critics contend that there are several factors the method ignores that may explain the phenomenon of gerrymandering. Two such critics, Chris Winkelman, an attorney for the National Republican Congressional Committee and Phillip Gordon, an outside attorney, filed a brief with the Supreme Court in the \textit{Gill v. Whitford} case exposing what they saw as flaws in the efficiency gap formula.\cite{winkelman} These are indicative of the major arguments against the efficiency gap that we have found.
+\begin{enumerate}
+    \item The method assumes that voters' party loyalties are static. In predicting the future, the model assums that voters never change their minds and are not swayed by the contextual candidates involved. Winkelman and Gordon point to the 2012 and 2016 elections. They contend that studies have shown between 11 to 15 percent of voters chose Barack Obama, a Democrat, in 2012 and then chose Donald Trump, a Republican, in 2016. In addition, in 2016 12 Democrats won in districts that elected Trump while 23 Republicans won in districts that elected Clinton.
+    \item The method ignores the effect of partisan geometry. The method assumes that partisan loyalties are spread out evenly among a state, when this is not the case. Typically, Democrats tend to concentrate heavily in urban areas, while Republicans are more thinly spread out among rural and suburban areas. This makes drawing maps in a compact and contiguous manner, which most agree is the ideal way to draw a map as opposed to winding, snake-like districts that are clearly to lump chosen groups of voters together, naturally beneficial to Republicans.
+\end{enumerate}
+It is beyond the scope of this analysis to objectively prove or disprove points for and against the efficiency gap method. We provide counterpoints to show that there is not perfect consensus on this topic; this objective measure rests in the subjective hands of the Supreme Court.
+
 \section{Application}
 
 We implemented the efficiency gap method into a python application powered by real-world election data in order to determine whether the district maps for Indiana's House of Representatives and State Senate pass or fail the efficiency gap thresholds. 
@@ -282,15 +293,15 @@ With the data imported, the first step is to calculate the wasted votes for both
 \begin{quote}
 def dwaste(row):
     
-\indent if row['dvotes']\textgreater row['rvotes']:
+    if row['dvotes']\textgreater row['rvotes']:
     
-\indent \indent val = row['dvotes]-((row['dvotes']+row['rvotes'])*.5)
+        val = row['dvotes]-((row['dvotes']+row['rvotes'])*.5)
     
-\indent else:
+    else:
     
-\indent \indent val = row['dvotes']
+        val = row['dvotes']
     
-\indent return val
+    return val
 \end{quote}
 
 The Republican wasted votes function is identical except the 'dvotes' and 'rvotes' values are switched. This portion of the script goes line by line through the dataframe to calculate the wasted votes for each party per district. This needs to be done row by row as wasted votes cannot be found as an aggregate statewide total, but by looking at each individual district race. 
@@ -306,17 +317,21 @@ Next, we applied the rwaste() and dwaste() functions to our data frames, and the
 From there, we plugged the statewide wasted votes totals into our efficiency gap formula:
 
 \begin{quote}
-((dtotal - rtotal) / ((df['rvotes'].sum() + df['dvotes'].sum())) * 100
+((dtotal-rtotal)/((df['rvotes'].sum()+df['dvotes'].sum()))*100
 \end{quote}
 
 Finally, we implemented a simple function that serves as our threshold test. If the formula falls above 8, it triggers an "UNCONSTITUTIONAL GERRYMANDER" response:
 
 \begin{quote}
     def eg():
-    \indent if final > 8
-    \indent \indent print("UNCONSTITUTIONAL GERRYMANDER")
-    \indent else:
-    \indent \indent print("ACCEPTABLE")
+    
+        if final \textgreater 8
+        
+          print("UNCONSTITUTIONAL GERRYMANDER")
+            
+        else:
+        
+          print("ACCEPTABLE")
 \end{quote}
 
 Since the data used for this particular experiment is small, the application was able to be executed on a personal computer using an Ubuntu virtualbox. 
@@ -338,18 +353,36 @@ There are a few factors to consider that may be used to explain the discrepancy 
     Further analysis would need to be done in order to determine if this explanation suffices. It would, in fact, be in the Republicans best interest to find an alternative explanation other than gerrymandering. The efficiency gap authors, in outlining their proposed court test, allow that states above the threshold could show that the the gap was the result of either the "consistent application of legitimate policies", or "inevitable due to the states' underlying political geography."\cite{chicagothreshold}
 \end{itemize}
 
-The question remains whether this standard will be used to measure map bias and judge gerrymandering. During oral arguments for \textit{Whitford} in October 2017, Chief Justice John Roberts referred to the theory as "sociological gobbledygook".\cite{gilltranscript} But some court observers are anticipating Justice Kennedy, the swing vote, to vote in favor of the efficiency gap test.\cite{analysis}
+However, when compared to other Indiana political measures, the Senate result is not especially surprising. While the Indiana is admittedly a "red state", or a state predominantly partial to Republicans, the Senate seat share appears to be out of sync with other measures. Currently, there are only 9 Democrats to 41 Republicans in the Indiana State Senate\cite{senateresults2014}\cite{senateresults2016}, meaning the Democrats have a 18 percent seat share. Compare this with the last three statewide elections for governor in Indiana:
 
-\section{Criticism}
-\subsection{Efficiency gap shortfalls}
-\subsection{Philosophical differences}
+\begin{center}
+    \begin{tabular}{ |c|c|c| }
+    \hline
+    Year & Republican & Democrat \\
+    2008 & 58.8\%  & 40.0\% \\
+    2012 & 49.4\% & 46.5\% \\
+    2016 & 51.3\% & 45.4\% \\
+    \hline
+    \end{tabular}
+\end{center}
 
-\section{Alternative detection methods}
+Meanwhile, the House of Representatives has 30 Democrats to 70 Republicans \cite{houseresults}, which, while slightly lower than the gubernatorial vote share, can be explained as a "winner's bonus", or a small surplus of votes for the overall winning party. This is accepted by the efficiency gap authors and political scientists as a common feature in American political systems. They also accept that the USA is not a proportional representation system, where vote share corresponds virtually 1:1 with seat share.\cite{chicagoformula} Therefore measures like gubernatorial vote share versus legislative seat share cannot be used to prove partisan gerrymandering on its own, however, when drastic enough, it can certainly be used as a symptom to correspond with a more direct objective measure.
 
-\section{Gerrymandering Solutions}
+\section{Areas for further study}
+If further research and applications were to be conducted, especially in the realm of big data, it may prove to be beneficial to scrape data from all 50 states to create a time series of state legislature efficiency gap changes across the entire country. This could be coded to import election results dynamically as they are held. This would be useful in observing changes in efficiency gap scores in response to implementations of redistricting plans, identifying ideal redistricting methods, and generating data for use in speculative algorithm-based redistricting applications.
+
+Where there is big data application in gerrymandering detection, there is potentially much more in gerrymandering solutions and redistricting methods. AI and machine learning applications applied to the currently human-driven redistricting effort could prove to be revolutionary for this aspect of our electoral system. 
+
+Finally, it is not our intention to suggest that the efficiency gap is the only or even the best method for detecting gerrymandering. It was selected due to its prominence in the major case facing the Supreme Court that could reshape how we measure gerrymandering and conduct redistricting. There are other methods\cite{levin}\cite{warrington} that have been proposed that may be able to be compared with the efficiency gap method.
 
 \section{Conclusion}
+An objective way to measure gerrymandering? Or, as Chief Justice John Roberts so colorfully put it, "sociological gobbledygook"? That definitive answer to that question lies outside the scope of this analysis, and the relevance of that question lies solely with the United States Supreme Court. They have the power, in coming months, to either make this measure the standard with which to measure all district maps moving forward, or toss it aside and continue this country's long history of ignoring partisan gerrymandering as far as the law is concerned.
 
+We have shown how data can be used to transform the debate around partisan gerrymandering, taking what used to be a heated back and forth based on the arguers' political persuasions and elevating it to a debate on which mathematical standard should be used to measure gerrymandering. Though, some still contend that it cannot be measured objectively whatsoever. 
+
+We have demonstrated on a preliminary basis some correlation between an excessive efficiency gap score and a disproportionate vote share in the case of the Indiana State Senate.
+
+At the very least, we have sought to prove that the efficiency gap is indeed easy to calculate based on the parameters specified by the method's creators. For someone such as Chief Justice John Roberts, simpler may be better.
 
 \begin{acks}
 
