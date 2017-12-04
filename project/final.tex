@@ -179,7 +179,10 @@ These races result in an overwhelming amount of wasted votes for Party A, and a 
 
 We can see that Party A has many more wasted votes than Party B, indicating the map may be drawn to minimize the efficiency of Party A. We then add up the total number of votes cast statewide and plug these numbers into our efficiency gap formula:
 
-\[\frac{448-52}{1000} = \frac{396}{1000} = 0.396\]
+\begin{displaymath}
+\frac{448-52}{1000} = \frac{396}{1000} = 0.396\
+\end{displaymath}
+
 
 So our efficiency gap, written as a percentage, is 39.6 percent. The map is clearly tilted in favor of Party B. But is it considered illegal gerrymandering? In their paper, the authors establish thresholds for when an efficiency gap indicates levels of illegal gerrymandering:
 
@@ -212,7 +215,11 @@ We have brought the score effectively to 0. So using this formula, we have deter
 
 \section{Application}
 
-We implemented the efficiency gap method into a python application powered by real-world election data in order to determine whether Indiana's state house and senate maps pass or fail the efficiency gap thresholds. 
+We implemented the efficiency gap method into a python application powered by real-world election data in order to determine whether the district maps for Indiana's House of Representatives and State Senate pass or fail the efficiency gap thresholds. 
+
+Indiana was chosen arbitrarily, primarily because it is the home to both the author and institution of this paper. In addition, Indiana's legislature gives us clean and uniform data to work with, as there are an even number of senators and representatives elected, no special elections, and no run-off elections to complicate the data. However, after implementation of the application, it became apparent that it was fortunate Indiana was chosen as the results showcase important teaching moments in understanding the efficiency gap and its applications.
+
+Because we were evaluating state legislatures, we did not have to calculate seats lost, so the results are given in raw efficiency gap score. 
 
 \subsection{Data sourcing and cleaning}
 
@@ -252,7 +259,84 @@ There were two complicating factors with the data that needed to be cleaned befo
 
 \subsection{Implementation}
 
-\subsection{results}
+The application made moderate use of the Python Pandas module. We began by importing two dataframes: the 2016 House results, and the 2014 and 2016 Senate results combined into one dataframe. Because the efficiency gap is a simple formula, the values needed are similarly simple. The only values needed were the Republican votes and Democratic votes for each district:
+
+\begin{center}
+\begin{tabular}{ |c|c|c| }
+    district & dvotes & rvotes \\
+    1 & 15561 & 7780 \\
+    2 & 24820 & 12786 \\
+\end{tabular}
+\end{center}
+\begin{center}
+...
+\end{center}
+\begin{center}
+\begin{tabular}{ |c|c|c| }
+    99 & 24820 & 12786 \\
+    100 & 14110 & 7055 \\
+\end{tabular}
+\end{center}
+
+With the data imported, the first step is to calculate the wasted votes for both parties. We have two separate functions to calculate Democratic wasted votes and Republican wasted votes.
+\begin{quote}
+def dwaste(row):
+    
+\indent if row['dvotes']\textgreater row['rvotes']:
+    
+\indent \indent val = row['dvotes]-((row['dvotes']+row['rvotes'])*.5)
+    
+\indent else:
+    
+\indent \indent val = row['dvotes']
+    
+\indent return val
+\end{quote}
+
+The Republican wasted votes function is identical except the 'dvotes' and 'rvotes' values are switched. This portion of the script goes line by line through the dataframe to calculate the wasted votes for each party per district. This needs to be done row by row as wasted votes cannot be found as an aggregate statewide total, but by looking at each individual district race. 
+
+Next, we applied the rwaste() and dwaste() functions to our data frames, and then we can get our statewide totals of wasted votes by party:
+
+\begin{quote}
+    df['rwaste'] = df.apply(rwaste, axis=1)
+    
+    rtotal = df['rwaste'].sum()
+\end{quote}
+
+From there, we plugged the statewide wasted votes totals into our efficiency gap formula:
+
+\begin{quote}
+((dtotal - rtotal) / ((df['rvotes'].sum() + df['dvotes'].sum())) * 100
+\end{quote}
+
+Finally, we implemented a simple function that serves as our threshold test. If the formula falls above 8, it triggers an "UNCONSTITUTIONAL GERRYMANDER" response:
+
+\begin{quote}
+    def eg():
+    \indent if final > 8
+    \indent \indent print("UNCONSTITUTIONAL GERRYMANDER")
+    \indent else:
+    \indent \indent print("ACCEPTABLE")
+\end{quote}
+
+Since the data used for this particular experiment is small, the application was able to be executed on a personal computer using an Ubuntu virtualbox. 
+
+\subsection{Results}
+
+The application revealed that the House of Representatives, with 2,992,624 votes cast, had 838,675 Democratic wasted votes and 657,637 Republican wasted votes resulting in an efficiency gap score of 6.05 percent in favor of Republicans. This falls under the 8 percent threshold, indicating that if the efficiency gap were to be adopted as a court standard by the Supreme Court, this map would be ruled constitutional.
+
+On the other hand, the Senate, with 2,107,263 votes cast, has 661,509 Democratic wasted votes and 347,122 Republican wasted votes resulting in an efficiency gap score of 15.58 percent in favor of Republicans. This lands well above the gerrymandering threshold. If this standard were to be adopted by the Supreme Court, there is a decent chance the Senate map would be ruled unconstitutional. 
+
+There are a few factors to consider that may be used to explain the discrepancy with the Senate vote:
+\begin{itemize}
+    \item If we take at face value that the Senate is twice as gerrymandered as the House, a major reason could be district size. The House has twice as many districts as the Senate over the same land area. The more granular a district is, the more difficult it becomes for a map to be gerrymandered, as you have smaller populations and smaller land areas per district. People of similar ideologies and political leanings tend to group together, so with smaller parameters, it becomes more difficult to group some of these individuals with opposing parties in order to "crack" their vote. 
+    \item If we are skeptical, the results could be explained by the fact that half of the Senate data was taken from the 2014 midterm election, while all of the House data was taken from the 2016 presidential election. 
+    \begin{itemize}
+        \item Midterm elections tend to have lower voter turnout, so the data may not be as accurately reflect the true political landscape of a region. In 2014, Indiana had a voter turnout rate of 28 percent, the lowest in the nation that year\cite{2014turnout}, compared to 58 percent in 2016.\cite{2016turnout}
+        \item Historically, Republicans tend to have higher turnout in midterm elections. Nationally, Republicans were 20 percent more likely to vote in 2010 and 2014 than Democrats were, according to an analysis by the New York Times' Nate Cohn. \cite{cohn}
+    \end{itemize}
+    Further analysis would need to be done in order to determine if this explanation suffices. It would, in fact, be in the Republicans best interest to find an alternative explanation other than gerrymandering. The efficiency gap authors, in outlining their proposed court test, allow that states above the threshold could show that the the gap was the result of either the "consistent application of legitimate policies", or "inevitable due to the states' underlying political geography."\cite{chicagothreshold}
+\end{itemize}
 
 The question remains whether this standard will be used to measure map bias and judge gerrymandering. During oral arguments for \textit{Whitford} in October 2017, Chief Justice John Roberts referred to the theory as "sociological gobbledygook".\cite{gilltranscript} But some court observers are anticipating Justice Kennedy, the swing vote, to vote in favor of the efficiency gap test.\cite{analysis}
 
