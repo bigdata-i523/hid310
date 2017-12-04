@@ -41,10 +41,11 @@ paper2:
 
 project:
     abstract: >
+    Can the evergreen issue of partisan gerrymandering be solved using data and algorithms? That question is closer to being solved than ever, as a method developed by University of Chicago researchers in 2014 is currently pending approval by the United States Supreme Court. We examine the method, known as the efficiency gap model, using data from Indiana's recent State Senate and House elections. We then evaluate the effectiveness of this model, take stock of any substantial critiques, and suggest courses of further research.
     author: Kevin Duffy
     chapter: Business
     hid: 310
-    status: 50%
+    status: 100%
     title: Gerrymandering Detection Using Data Analysis
     type: python
     url: https://github.com/bigdata-i523/hid310/project
