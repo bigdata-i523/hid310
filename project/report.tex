@@ -109,11 +109,11 @@ If the two parties have similar numbers of wasted votes, or neither party has a 
 
 This method captures the effects of both cracking and packing: packing will be detected by the wasted votes from an excessive victory, and cracking will be detected excessive amounts of losing votes statewide.
 
-Let's apply this to an example. Let's say Party A and Party B are competing in a state with ten congressional districts of 100 people each (see Table 1).
+Let's apply this to an example. Let's say Party A and Party B are competing in a state with ten congressional districts of 100 people each.
 
 \begin{table}
 \caption{Election Scenario A}
-\label{tab:freq}
+\label{tab:Table 1}
 \begin{tabular}{ccl} 
  \hline
  District & Party A votes & Party B votes \\
@@ -141,11 +141,11 @@ Let's apply this to an example. Let's say Party A and Party B are competing in a
 \end{tabular}
 \end{table}
 
-In Districts 01, 04, 06, and 09, Party A wins by an overwhelming margin. In the rest of the districts, Party B wins by narrow margins. This results in more votes being cast for Party A statewide, but Party B gets more seats as shown in Table 2:
+Per \ref{tab:Table 1}, in Districts 01, 04, 06, and 09, Party A wins by an overwhelming margin. In the rest of the districts, Party B wins by narrow margins. This results in more votes being cast for Party A statewide, but Party B gets more seats as shown in \ref{tab:Table 2}:
 
 \begin{table}
 \caption{Scenario A Total Votes and Net Seats by Party}
-\label{tab:freq}
+\label{tab:Table 2}
     \begin{tabular}{ccl}
     \hline
             & Party A & Party B \\
@@ -157,11 +157,11 @@ In Districts 01, 04, 06, and 09, Party A wins by an overwhelming margin. In the 
     \end{tabular}
 \end{table}
 
-These races result in an overwhelming amount of wasted votes for Party A, and a minimal amount for Party B as shown in Table 3.
+These races result in an overwhelming amount of wasted votes for Party A, and a minimal amount for Party B as shown in \ref{tab:Table 3}.
 
 \begin{table}
 \caption{Scenario A Wasted Votes by Party}
-\label{tab:freq}
+\label{tab:Table 3}
 \begin{tabular}{ccl} 
  \hline
  District & Party A Wasted votes & Party B Wasted votes \\
@@ -290,11 +290,11 @@ There were two complicating factors with the data that needed to be cleaned befo
 
 \subsection{Implementation}
 
-The application made moderate use of the Python Pandas module. We began by importing two dataframes: the 2016 House results, and the 2014 and 2016 Senate results combined into one dataframe. Because the efficiency gap is a simple formula, the values needed are similarly simple. The only values needed were the Republican votes and Democratic votes for each district (see Table 4):
+The application made moderate use of the Python Pandas module. We began by importing two dataframes: the 2016 House results, and the 2014 and 2016 Senate results combined into one dataframe. Because the efficiency gap is a simple formula, the values needed are similarly simple. The only values needed were the Republican votes and Democratic votes for each district as seen in \ref{tab:Table 4}:
 
 \begin{table}
 \caption{Indiana House votes sample \cite{houseresults}}
-\label{tab:freq}
+\label{tab:Table 4}
 \begin{tabular}{ccl}
 \hline
     district & dvotes & rvotes \\
@@ -376,11 +376,11 @@ There are a few factors to consider that may be used to explain the discrepancy 
     Further analysis would need to be done in order to determine if this explanation suffices. It would, in fact, be in the Republicans best interest to find an alternative explanation other than gerrymandering. Again, it can be allowed that states above the threshold could show that the the gap was the result of either the "consistent application of legitimate policies", or "inevitable due to the states' underlying political geography."\cite{chicagothreshold}
 \end{itemize}
 
-However, when compared to other Indiana political measures, the Senate result is not especially surprising. While the Indiana is admittedly a "red state", or a state predominantly partial to Republicans, the Senate seat share appears to be out of sync with other measures. Currently, there are only 9 Democrats to 41 Republicans in the Indiana State Senate\cite{senateresults2014}\cite{senateresults2016}, meaning the Democrats have a 18 percent seat share. Compare this with the last three statewide elections for governor in Indiana:
+However, when compared to other Indiana political measures, the Senate result is not especially surprising. While the Indiana is admittedly a "red state", or a state predominantly partial to Republicans, the Senate seat share appears to be out of sync with other measures. Currently, there are only 9 Democrats to 41 Republicans in the Indiana State Senate\cite{senateresults2014}\cite{senateresults2016}, meaning the Democrats have a 18 percent seat share. Compare this with the last three statewide elections for governor in Indiana in \ref{tab:Table 5}:
 
 \begin{table}
 \caption{Indiana Gubernatorial results by year}
-\label{tab:freq}
+\label{tab:Table 5}
     \begin{tabular}{ccl}
     \hline
     Year & Republican & Democrat \\
