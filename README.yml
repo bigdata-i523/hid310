@@ -18,8 +18,7 @@ paper1:
     status: Nov 20 17 100%
     title: Big Data Applications in Food Insecurity
     type: paper
-    url: https://github.com/bigdata-i523/hid310/paper1
-    
+    url: https://github.com/bigdata-i523/hid310/paper1   
 paper2:
     abstract: >
         The idea of predicting car crashes used to be a fruitless
@@ -40,7 +39,6 @@ paper2:
     title: Big Data Applications for Vehicle Crash Prediction
     type: paper
     url: https://github.com/bigdata-i523/hid310/paper2
-    
 project:
     review: Dec 4 2017
     author:
