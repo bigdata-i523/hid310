@@ -17,7 +17,6 @@ paper1:
         - 310
     status: Nov 20 17 100%
     title: Big Data Applications in Food Insecurity
-    type: paper
     url: https://github.com/bigdata-i523/hid310/paper1
 paper2:
     abstract: >
@@ -37,7 +36,6 @@ paper2:
         - 310
     status: Nov 06 17 100%
     title: Big Data Applications for Vehicle Crash Prediction
-    type: paper
     url: https://github.com/bigdata-i523/hid310/paper2
 project:
     review: Dec 4 2017
